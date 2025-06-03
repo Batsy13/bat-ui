@@ -4,10 +4,10 @@ export const Header = () => {
             <div>
                 <nav className="flex items-center gap-6 text-[#ffffff]">
                     <div className="size-[32px] bg-red-500 rounded-[5px]"></div>
-                    <a className="px-4 py-1 bg-transparent hover:bg-[#242424] rounded-[5px] cursor-pointer">Docs</a>
-                    <a className="px-4 py-1 bg-transparent hover:bg-[#242424] rounded-[5px] cursor-pointer">Components</a>
-                    <a className="px-4 py-1 bg-transparent hover:bg-[#242424] rounded-[5px] cursor-pointer">Examples</a>
-                    <a className="px-4 py-1 bg-transparent hover:bg-[#242424] rounded-[5px] cursor-pointer">Themes</a>
+                    <a className="px-4 py-1 bg-transparent hover:bg-[#242424] rounded-[5px] cursor-pointer" href="/docs">Docs</a>
+                    <a className="px-4 py-1 bg-transparent hover:bg-[#242424] rounded-[5px] cursor-pointer" href="/docs/components">Components</a>
+                    <a className="px-4 py-1 bg-transparent hover:bg-[#242424] rounded-[5px] cursor-pointer" href="/examples">Examples</a>
+                    <a className="px-4 py-1 bg-transparent hover:bg-[#242424] rounded-[5px] cursor-pointer" href="/themes">Themes</a>
                 </nav>
             </div>
             <div className="flex gap-4">

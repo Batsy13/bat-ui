@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+h1 {
+    font-size: 2.25rem;
+    font-weight: 500;
+}
+
+.description {
+    color: #9C9C9C;
+}
+
 :root {
     font-family: "Rubik", sans-serif;
     --radius: 0.65rem;

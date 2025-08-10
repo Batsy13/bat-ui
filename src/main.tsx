@@ -5,6 +5,7 @@ import AppLayout from "./app-layout";
 import { Home } from "./pages/home";
 import { DocsLayout } from "./components/docs/docs-layout";
 import { DocsHome } from "./components/docs/docs-home";
+import AccordionPage from "./pages/components/accordion-page";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route index element={<Home />}></Route>
         <Route path="docs" element={<DocsLayout />}>
           <Route index element={<DocsHome />}></Route>
-          <Route path="components"></Route>
+          <Route path="components">
+            <Route path="accordion" element={<AccordionPage />}/>
+          </Route>
         </Route>
       </Route>
     </Routes>

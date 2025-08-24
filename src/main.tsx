@@ -6,6 +6,7 @@ import { Home } from "./pages/home";
 import { DocsLayout } from "./components/docs/docs-layout";
 import { DocsHome } from "./components/docs/docs-home";
 import AccordionPage from "./pages/components/accordion-page";
+import AlertDialogPage from "./pages/components/alert-dialog-page";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route index element={<DocsHome />}></Route>
           <Route path="components">
             <Route path="accordion" element={<AccordionPage />}/>
+            <Route path="alert-dialog" element={<AlertDialogPage />}/>
           </Route>
         </Route>
       </Route>

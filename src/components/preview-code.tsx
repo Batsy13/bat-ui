@@ -19,7 +19,9 @@ export const PreviewCode = ({
                 <button
                     onClick={() => setActiveTab("preview")}
                     className={cn(
-                        activeTab == "preview" ? "text-white" : "text-[#9C9C9C]",
+                        activeTab == "preview"
+                            ? "text-white"
+                            : "text-[#9C9C9C]",
                         "cursor-pointer"
                     )}
                 >
@@ -47,7 +49,7 @@ export const PreviewCode = ({
             )}
 
             {activeTab == "code" && (
-                <div className="relative flex w-full px-10 py-8 h-[450px] border border-[#262626] rounded-xl overflow-auto">
+                <div className="relative flex w-full px-10 py-8 h-[450px] border border-[#262626] rounded-xl overflow-scroll">
                     <button
                         className="absolute top-4 right-4 p-2 rounded-[8px] cursor-pointer hover:bg-[#262626] transition-all duration-300 ease-in-out"
                         onClick={() => navigator.clipboard.writeText(code!)}

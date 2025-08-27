@@ -9,6 +9,7 @@ import AccordionPage from "./pages/components/accordion-page";
 import AlertDialogPage from "./pages/components/alert-dialog-page";
 import ButtonPage from "./pages/components/button-page";
 import AspectRatioPage from "./pages/components/aspect-ratio-page";
+import { Page404 } from "./pages/404-not-found";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           </Route>
         </Route>
       </Route>
+      <Route path="*" element={<Page404 />}/>
     </Routes>
   </BrowserRouter>
 );

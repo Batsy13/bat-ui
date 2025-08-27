@@ -26,6 +26,16 @@ h2 {
     /* Firefox */
 }
 
+@theme {
+    --color-primary: var(--primary);
+    --color-secondary: #202020;
+    --color-background: #0A0A0A;
+    --color-card: #101010;
+    --color-border: #262626;
+    --color-success: #5CB85C;
+    --color-destructive: #9F0303;
+}
+
 :root {
     font-family: "Rubik", sans-serif;
     --radius: 0.65rem;

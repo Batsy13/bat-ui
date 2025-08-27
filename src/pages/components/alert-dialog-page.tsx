@@ -6,9 +6,9 @@ import {
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTrigger,
-} from "../../components/alert-dialog";
-import { PreviewCode } from "../../components/preview-code";
-import { Terminal } from "../../components/terminal";
+} from "../../components/ui/alert-dialog";
+import { PreviewCode } from "../../components/ui/preview-code";
+import { Terminal } from "../../components/ui/terminal";
 
 export default function AlertDialogPage() {
     return (
@@ -54,7 +54,7 @@ export default function AlertDialogPage() {
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTrigger,
-} from "../../components/alert-dialog";
+} from "@/components/ui/alert-dialog";
 
 <AlertDialogTrigger className="text-white bg-red-500 cursor-pointer hover:bg-red-600">
                 Delete Account
@@ -97,7 +97,7 @@ export default function AlertDialogPage() {
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTrigger,
-} from "../../components/alert-dialog";`}
+} from "@/components/ui/alert-dialog";`}
                 />
                 <Terminal
                     type="code"

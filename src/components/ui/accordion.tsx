@@ -1,12 +1,12 @@
 import { ChevronDown } from "lucide-react";
-import { cn } from "../lib/utils";
-import useAccordionStore from "../store/accordion-store";
+import { cn } from "../../lib/utils";
+import useAccordionStore from "../../store/accordion-store";
 import {
     AccordionProps,
     AccordionItemProps,
     AccordionTriggerProps,
     AccordionContentProps,
-} from "../types/accordion";
+} from "../../types/accordion";
 import { useState } from "react";
 
 const Accordion = ({ children, defaultOpen, className }: AccordionProps) => {

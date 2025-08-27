@@ -1,6 +1,6 @@
 import { Copy, TerminalIcon } from "lucide-react";
 import { useState } from "react";
-import { cn } from "../lib/utils";
+import { cn } from "../../lib/utils";
 
 type TerminalProps = {
     type?: "component-terminal" | "bash" | "code";

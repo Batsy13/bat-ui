@@ -1,8 +1,8 @@
 import { cva, VariantProps } from "class-variance-authority";
-import { cn } from "../lib/utils";
+import { cn } from "../../lib/utils";
 import { ReactNode } from "react";
 import { Button } from "./button";
-import { useAlertDialogStore } from "../store/use-alert-dialog";
+import { useAlertDialogStore } from "../../store/use-alert-dialog";
 
 type AlertProps = {
     variant?: "default" | "destructive";

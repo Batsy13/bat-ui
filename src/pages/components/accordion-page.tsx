@@ -3,9 +3,9 @@ import {
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-} from "../../components/accordion";
-import { PreviewCode } from "../../components/preview-code";
-import { Terminal } from "../../components/terminal";
+} from "../../components/ui/accordion";
+import { PreviewCode } from "../../components/ui/preview-code";
+import { Terminal } from "../../components/ui/terminal";
 
 export default function AccordionPage() {
     return (
@@ -126,7 +126,7 @@ export default AccordionDemo;
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/ui/components/accordion";`}
+} from "@/components/ui/accordion";`}
                 />
                 <Terminal
                     type="code"

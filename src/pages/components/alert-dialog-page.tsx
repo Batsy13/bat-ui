@@ -12,7 +12,7 @@ import { Terminal } from "../../components/ui/terminal";
 
 export default function AlertDialogPage() {
     return (
-        <div className="flex flex-col max-w-2xl gap-12 mx-auto text-white md:px-0 lg:py-14">
+        <div className="flex flex-col w-full max-w-2xl gap-12 mx-auto text-white md:px-0 lg:py-14">
             <div className="flex flex-col gap-2">
                 <h1>Alert Dialog</h1>
                 <p className="description">

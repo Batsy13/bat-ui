@@ -1,4 +1,4 @@
-import { useLocation } from "react-router";
+import { Link, useLocation } from "react-router";
 import { cn } from "../lib/utils";
 
 const components = [
@@ -63,12 +63,12 @@ export const NavSidebar = () => {
             <div className="text-[#a7a7a7] px-3">Components</div>
             <div className="py-4 text-white text-[14px] flex items-start gap-1 flex-col">
                 {components.map((item) => (
-                    <a
+                    <Link
                         className={cn("bg-transparent hover:bg-[#141414] px-3 py-[5px] cursor-pointer rounded-[5px]", pathname === `/docs/components${item.path}` ? "bg-secondary hover:bg-secondary" : "")}
-                        href={`/docs/components${item.path}`}
+                        to={`/docs/components${item.path}`}
                     >
                         {item.title}
-                    </a>
+                    </Link>
                 ))}
             </div>
         </aside>

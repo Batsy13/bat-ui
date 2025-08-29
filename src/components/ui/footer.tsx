@@ -1,16 +1,18 @@
+import { Link } from "react-router";
+
 export const Footer = () => {
     return (
         <footer className="flex items-center justify-center w-full py-6 text-[#BEBEBE]">
             <span>
                 Built by{" "}
-                <a
-                    href="https://github.com/Batsy13"
+                <Link
+                    to="https://github.com/Batsy13"
                     className="font-bold hover:text-red-500"
                     target="_blank"
                 >
                     {" "}
                     @Batsy
-                </a>
+                </Link>
                 . Only for studies.
             </span>
         </footer>

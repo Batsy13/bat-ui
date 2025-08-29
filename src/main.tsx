@@ -11,6 +11,7 @@ import ButtonPage from "./pages/components/button-page";
 import AspectRatioPage from "./pages/components/aspect-ratio-page";
 import BadgePage from "./pages/components/badge-page";
 import { Page404 } from "./pages/404-not-found";
+import AvatarPage from "./pages/components/avatar-page";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -23,8 +24,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <Route path="accordion" element={<AccordionPage />}/>
             <Route path="alert-dialog" element={<AlertDialogPage />}/>
             <Route path="aspect-ratio" element={<AspectRatioPage />}/>
-            <Route path="button" element={<ButtonPage />}/>
+            <Route path="avatar" element={<AvatarPage />}/>
             <Route path="badge" element={<BadgePage />}/>
+            <Route path="button" element={<ButtonPage />}/>
           </Route>
         </Route>
       </Route>

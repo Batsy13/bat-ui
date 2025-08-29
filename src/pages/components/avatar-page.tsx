@@ -7,7 +7,7 @@ export default function AvatarPage() {
         <div className="flex flex-col w-full max-w-2xl gap-12 mx-auto text-white md:px-0 lg:py-14">
             <div className="flex flex-col gap-2">
                 <h1>Avatar</h1>
-                <p className="description">An Image element with fallack for the username</p>
+                <p className="text-description">An Image element with fallack for the username</p>
             </div>
 
             <PreviewCode
@@ -25,7 +25,7 @@ export default function AvatarPage() {
             <div className="flex items-center gap-2">
                 <Avatar name="Ren Amamiya" img="https://i.redd.it/unicurnujpqc1.jpeg"/>
                 <Avatar name="Ren Amamiya" img="link aleatorio que nao funfa"/>
-                <Avatar name="Ren Amamiya" img="https://www.denofgeek.com/wp-content/uploads/2020/03/neil-gaiman-the-sandman.jpg?resize=400%2C400"/>
+                <Avatar name="Sandman" img="https://www.denofgeek.com/wp-content/uploads/2020/03/neil-gaiman-the-sandman.jpg?resize=400%2C400"/>
             </div>
         )
     }

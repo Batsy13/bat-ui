@@ -12,6 +12,7 @@ import AspectRatioPage from "./pages/components/aspect-ratio-page";
 import BadgePage from "./pages/components/badge-page";
 import { Page404 } from "./pages/404-not-found";
 import AvatarPage from "./pages/components/avatar-page";
+import AlertPage from "./pages/components/alert-page";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route index element={<DocsHome />}></Route>
           <Route path="components">
             <Route path="accordion" element={<AccordionPage />}/>
+            <Route path="alert" element={<AlertPage />}/>
             <Route path="alert-dialog" element={<AlertDialogPage />}/>
             <Route path="aspect-ratio" element={<AspectRatioPage />}/>
             <Route path="avatar" element={<AvatarPage />}/>

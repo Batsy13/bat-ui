@@ -7,7 +7,7 @@ export default function AspectRatioPage() {
         <div className="flex flex-col w-full max-w-2xl gap-12 mx-auto text-white md:px-0 lg:py-14">
             <div className="flex flex-col gap-2">
                 <h1>Aspect Ratio</h1>
-                <p className="description">
+                <p className="text-description">
                     A proportional relationship between an element's width and height.
                 </p>
             </div>

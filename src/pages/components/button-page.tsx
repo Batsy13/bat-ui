@@ -7,7 +7,7 @@ export default function ButtonPage() {
         <div className="flex flex-col w-full max-w-2xl gap-12 mx-auto text-white md:px-0 lg:py-14">
             <div className="flex flex-col gap-2">
                 <h1>Button</h1>
-                <p className="description">
+                <p className="text-description">
                     An interactive element that triggers an action or event when
                     clicked.
                 </p>

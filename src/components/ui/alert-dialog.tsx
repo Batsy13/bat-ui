@@ -4,25 +4,25 @@ import { ReactNode } from "react";
 import { Button } from "./button";
 import { useAlertDialogStore } from "../../store/use-alert-dialog";
 
-type AlertProps = {
+type AlertDialogProps = {
     variant?: "default" | "destructive";
     children: ReactNode;
     className?: string;
 };
 
-type AlertHeaderProps = {
+type AlertDialogHeaderProps = {
     title: string;
     description?: string;
     className?: string;
 };
 
 const alertVariants = cva(
-    "relative w-full max-w-2xl rounded-[5px] p-6 flex flex-col gap-4",
+    "bg-[#101010] relative w-full max-w-2xl rounded-[5px] p-6 flex flex-col gap-4",
     {
         variants: {
             variant: {
-                default: "bg-[#101010]",
-                destructive: "text-red-500",
+                default: "",
+                destructive: "text-destructive",
             },
         },
         defaultVariants: {
@@ -35,8 +35,8 @@ const AlertDialog = ({
     variant,
     children,
     className,
-}: AlertProps & VariantProps<typeof alertVariants>) => {
-    const { isOpen } = useAlertDialogStore();
+}: AlertDialogProps & VariantProps<typeof alertVariants>) => {
+    const { isOpen, close } = useAlertDialogStore();
 
     if (!isOpen) {
         return null;
@@ -45,7 +45,7 @@ const AlertDialog = ({
     return (
         <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs"
-            onClick={() => useAlertDialogStore.getState().close()}
+            onClick={close}
         >
             <div
                 role="alertdialog"
@@ -85,8 +85,8 @@ const AlertDialogContent = ({
     );
 };
 
-const AlertDialogHeader = ({ title, description }: AlertHeaderProps) => (
-    <div className="flex flex-col gap-2">
+const AlertDialogHeader = ({ title, description, className }: AlertDialogHeaderProps) => (
+    <div className={cn("flex flex-col gap-2", className)}>
         <h2 className="text-lg font-semibold text-white">{title}</h2>
         <p className="text-sm text-[#9C9C9C]">{description}</p>
     </div>

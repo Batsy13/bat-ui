@@ -66,6 +66,7 @@ export const NavSidebar = () => {
                     <Link
                         className={cn("bg-transparent hover:bg-[#141414] px-3 py-[5px] cursor-pointer rounded-[5px]", pathname === `/docs/components${item.path}` ? "bg-secondary hover:bg-secondary" : "")}
                         to={`/docs/components${item.path}`}
+                        key={item.title}
                     >
                         {item.title}
                     </Link>

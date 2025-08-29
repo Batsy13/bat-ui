@@ -43,7 +43,7 @@ export default AspectRatioDemo;
                 <h2>Usage</h2>
                 <Terminal
                     type="code"
-                    code={`import { AspectRatio } from "@/components/ui/AspectRatio";`}
+                    code={`import { AspectRatio } from "@/components/ui/aspect-ratio";`}
                 />
                 <Terminal
                     type="code"

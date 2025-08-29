@@ -65,7 +65,7 @@ export const NavSidebar = () => {
                 {components.map((item) => (
                     <a
                         className={cn("bg-transparent hover:bg-[#141414] px-3 py-[5px] cursor-pointer rounded-[5px]", pathname === `/docs/components${item.path}` ? "bg-secondary hover:bg-secondary" : "")}
-                        href={`/docs/components/${item.path}`}
+                        href={`/docs/components${item.path}`}
                     >
                         {item.title}
                     </a>

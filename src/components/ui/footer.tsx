@@ -2,8 +2,8 @@ import { Link } from "react-router";
 
 export const Footer = () => {
     return (
-        <footer className="flex items-center justify-center w-full py-6 text-[#BEBEBE]">
-            <span>
+        <footer className="flex items-center justify-center w-full py-12 text-[#BEBEBE]">
+            <div>
                 Built by{" "}
                 <Link
                     to="https://github.com/Batsy13"
@@ -14,7 +14,7 @@ export const Footer = () => {
                     @Batsy
                 </Link>
                 . Only for studies.
-            </span>
+            </div>
         </footer>
     );
 };

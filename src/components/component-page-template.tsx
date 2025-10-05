@@ -36,6 +36,24 @@ export function ComponentPageTemplate({ data }: ComponentPageTemplateProps) {
           <Terminal key={index} type="code" code={codeSnippet} />
         ))}
       </div>
+
+      {data.examples && data.examples.length > 0 && (
+        <div className="flex flex-col gap-12">
+          <h2>Examples</h2>
+          {data.examples.map((example) => {
+            const ExamplePreview = example.preview;
+            return (
+              <div key={example.title} className="flex flex-col gap-4">
+                <h3 className="text-xl">{example.title}</h3>
+                <PreviewCode
+                  preview={<ExamplePreview />}
+                  code={example.code}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

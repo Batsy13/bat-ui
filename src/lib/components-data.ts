@@ -3,7 +3,7 @@ import { AccordionDemo } from "../components/demos/accordion-demo";
 import { AspectRatioDemo } from "../components/demos/aspect-ratio-demo";
 import { AvatarDemo } from "../components/demos/avatar-demo";
 import { BadgeDemo } from "../components/demos/badge-demo";
-import { ButtonDemo } from "../components/demos/button-demo";
+import { ButtonDemo, ButtonDestructiveDemo, ButtonGhostDemo, ButtonLinkDemo, ButtonOutlineDemo, ButtonSecondaryDemo } from "../components/demos/button-demo";
 import { AlertDemo } from "../components/demos/alert-demo";
 import { AlertDialogDemo } from "../components/demos/alert-dialog-demo";
 
@@ -14,6 +14,7 @@ export type ComponentData = {
   preview: React.ComponentType;
   previewCode: string;
   usage: string[];
+  examples?: {title: string, preview: React.ComponentType, code: string}[]; 
 };
 
 export const componentsData: Record<string, ComponentData> = {
@@ -218,5 +219,61 @@ export default ButtonDemo;`,
       `import { Button } from "@/components/ui/button";`,
       `<Button variant="default">Click Me</Button>`,
     ],
+      examples: [
+      {
+        title: "Default",
+        preview: ButtonDemo,
+        code: `import { Button } from "@/components/ui/button";
+
+export function ButtonDefaultDemo() {
+  return <Button>Button</Button>
+}`
+      },
+      {
+        title: "Secondary",
+        preview: ButtonSecondaryDemo,
+        code: `import { Button } from "@/components/ui/button";
+
+export function ButtonSecondaryDemo() {
+  return <Button variant="secondary">Button</Button>
+}`
+      },
+      {
+        title: "Destructive",
+        preview: ButtonDestructiveDemo,
+        code: `import { Button } from "@/components/ui/button";
+
+export function ButtonDestructiveDemo() {
+  return <Button variant="destructive">Button</Button>
+}`
+      },
+      {
+        title: "Outline",
+        preview: ButtonOutlineDemo,
+        code: `import { Button } from "@/components/ui/button";
+
+export function ButtonOutlineDemo() {
+  return <Button variant="outline">Button</Button>
+}`
+      },
+      {
+        title: "Ghost",
+        preview: ButtonGhostDemo,
+        code: `import { Button } from "@/components/ui/button";
+
+export function ButtonGhostDemo() {
+  return <Button variant="ghost">Button</Button>
+}`
+      },
+      {
+        title: "Link",
+        preview: ButtonLinkDemo,
+        code: `import { Button } from "@/components/ui/button";
+
+export function ButtonLinkDemo() {
+  return <Button variant="link">Button</Button>
+}`
+      }
+    ]
   },
 };

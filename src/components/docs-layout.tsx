@@ -6,7 +6,7 @@ export const DocsLayout = () => {
   return (
     <div className="bg-[#0a0a0a] h-screen grid grid-cols-[300px_1fr_300px]">
       <NavSidebar />
-      <main className="flex flex-col h-full pb-10 w-full overflow-scroll no-scrollbar">
+      <main className="flex flex-col justify-between h-full pb-10 w-full overflow-scroll no-scrollbar">
         <Outlet />
         <Footer />
       </main>

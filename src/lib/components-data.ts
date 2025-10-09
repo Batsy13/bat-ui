@@ -3,9 +3,18 @@ import { AccordionDemo } from "../components/demos/accordion-demo";
 import { AspectRatioDemo } from "../components/demos/aspect-ratio-demo";
 import { AvatarDemo } from "../components/demos/avatar-demo";
 import { BadgeDemo } from "../components/demos/badge-demo";
-import { ButtonDemo, ButtonDestructiveDemo, ButtonGhostDemo, ButtonLinkDemo, ButtonOutlineDemo, ButtonSecondaryDemo } from "../components/demos/button-demo";
+import {
+  ButtonDemo,
+  ButtonDestructiveDemo,
+  ButtonGhostDemo,
+  ButtonLinkDemo,
+  ButtonOutlineDemo,
+  ButtonSecondaryDemo,
+} from "../components/demos/button-demo";
 import { AlertDemo } from "../components/demos/alert-demo";
 import { AlertDialogDemo } from "../components/demos/alert-dialog-demo";
+import { Terminal } from "../components/ui/terminal";
+import { TerminalBash, TerminalCode, TerminalComponentTerminal, TerminalDemo } from "../components/demos/terminal-demo";
 
 export type ComponentData = {
   name: string;
@@ -14,7 +23,7 @@ export type ComponentData = {
   preview: React.ComponentType;
   previewCode: string;
   usage: string[];
-  examples?: {title: string, preview: React.ComponentType, code: string}[]; 
+  examples?: { title: string; preview: React.ComponentType; code: string }[];
 };
 
 export const componentsData: Record<string, ComponentData> = {
@@ -219,7 +228,7 @@ export default ButtonDemo;`,
       `import { Button } from "@/components/ui/button";`,
       `<Button variant="default">Click Me</Button>`,
     ],
-      examples: [
+    examples: [
       {
         title: "Default",
         preview: ButtonDemo,
@@ -227,7 +236,7 @@ export default ButtonDemo;`,
 
 export function ButtonDefaultDemo() {
   return <Button>Button</Button>
-}`
+}`,
       },
       {
         title: "Secondary",
@@ -236,7 +245,7 @@ export function ButtonDefaultDemo() {
 
 export function ButtonSecondaryDemo() {
   return <Button variant="secondary">Button</Button>
-}`
+}`,
       },
       {
         title: "Destructive",
@@ -245,7 +254,7 @@ export function ButtonSecondaryDemo() {
 
 export function ButtonDestructiveDemo() {
   return <Button variant="destructive">Button</Button>
-}`
+}`,
       },
       {
         title: "Outline",
@@ -254,7 +263,7 @@ export function ButtonDestructiveDemo() {
 
 export function ButtonOutlineDemo() {
   return <Button variant="outline">Button</Button>
-}`
+}`,
       },
       {
         title: "Ghost",
@@ -263,7 +272,7 @@ export function ButtonOutlineDemo() {
 
 export function ButtonGhostDemo() {
   return <Button variant="ghost">Button</Button>
-}`
+}`,
       },
       {
         title: "Link",
@@ -272,8 +281,56 @@ export function ButtonGhostDemo() {
 
 export function ButtonLinkDemo() {
   return <Button variant="link">Button</Button>
-}`
-      }
-    ]
+}`,
+      },
+    ],
+  },
+  terminal: {
+    name: "Terminal",
+    description: "A terminal component",
+    installation: "terminal",
+    preview: TerminalDemo,
+    previewCode: `import { Terminal } from "@/components/ui/Terminal";
+
+export function TerminalDemo() {
+  return (
+    <div className="flex w-full flex-wrap gap-2">
+      <Terminal type="bash" code="button" library="bat/ui"/>
+    </div>
+  )
+}`,
+    usage: [
+      `import { Terminal } from "@/components/ui/Terminal";`,
+      `<Terminal type="bash" code="terminal" library="bat/ui"/>`,
+    ],
+    examples: [
+      {
+        title: "Bash",
+        preview: TerminalBash,
+        code: `import { Terminal } from "@/components/ui/Terminal";
+
+export const TerminalBash = () => {
+  return <Terminal type="bash" code="button" library="bat/ui"/>
+}`,
+      },
+      {
+        title: "Code",
+        preview: TerminalCode,
+        code: `import { Terminal } from "@/components/ui/Terminal";
+
+export const TerminalCode = () => {
+  return <Terminal type="code" code="Copy this text""/>
+}`,
+      },
+      {
+        title: "Component Terminal",
+        preview: TerminalComponentTerminal,
+        code: `import { Terminal } from "@/components/ui/Terminal";
+
+export const TerminalComponentTerminal = () => {
+  return <Terminal type="component-terminal" code="Copy this text" library="bat/ui" className="p-4"/>
+}`,
+      },
+    ],
   },
 };

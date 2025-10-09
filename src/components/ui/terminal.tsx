@@ -6,9 +6,10 @@ type TerminalProps = {
     type?: "component-terminal" | "bash" | "code";
     code: string;
     library?: string;
+    className?: string;
 };
 
-export const Terminal = ({ type = "code", code, library }: TerminalProps) => {
+export const Terminal = ({ type = "code", code, library, className }: TerminalProps) => {
     const [bash, setBash] = useState("pnpm");
 
     let command = "";
@@ -33,7 +34,7 @@ export const Terminal = ({ type = "code", code, library }: TerminalProps) => {
     return (
         <>
             {type === "component-terminal" ? (
-                <div className="relative flex w-full px-10 h-[450px] border border-[#262626] rounded-xl overflow-auto">
+                <div className={cn("relative flex w-full px-10 h-[450px] border border-[#262626] rounded-xl overflow-auto", className)}>
                     <button
                         className="absolute top-4 right-4 p-2 rounded-[8px] cursor-pointer hover:bg-[#262626] transition-all duration-300 ease-in-out"
                         onClick={() => navigator.clipboard.writeText(code!)}
@@ -47,7 +48,7 @@ export const Terminal = ({ type = "code", code, library }: TerminalProps) => {
                     </pre>
                 </div>
             ) : type === "bash" ? (
-                <div className="flex flex-col w-full border border-[#262626] bg-[#101010] rounded-xl overflow-auto">
+                <div className={cn("flex flex-col w-full border border-[#262626] bg-[#101010] rounded-xl overflow-auto", className)}>
                     <div className="flex justify-between items-center p-2 border-b border-[#262626]">
                         <div className="flex items-center gap-3">
                             <TerminalIcon
@@ -118,7 +119,7 @@ export const Terminal = ({ type = "code", code, library }: TerminalProps) => {
                     </div>
                 </div>
             ) : (
-                <div className="relative flex w-full p-5 h-fit max-h-[450px] border border-[#262626] rounded-xl overflow-auto bg-[#101010]">
+                <div className={cn("relative flex w-full p-5 h-fit max-h-[450px] border border-[#262626] rounded-xl overflow-auto bg-[#101010]", className)}>
                     <button
                         className="absolute top-4 right-4 p-2 rounded-[8px] cursor-pointer hover:bg-[#262626] transition-all duration-300 ease-in-out"
                         onClick={() => navigator.clipboard.writeText(code!)}

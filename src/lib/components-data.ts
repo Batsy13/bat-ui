@@ -13,8 +13,8 @@ import {
 } from "../components/demos/button-demo";
 import { AlertDemo } from "../components/demos/alert-demo";
 import { AlertDialogDemo } from "../components/demos/alert-dialog-demo";
-import { Terminal } from "../components/ui/terminal";
 import { TerminalBash, TerminalCode, TerminalComponentTerminal, TerminalDemo } from "../components/demos/terminal-demo";
+import { DropdownMenuDemo } from "../components/demos/dropdown-menu-demo";
 
 export type ComponentData = {
   name: string;
@@ -285,6 +285,52 @@ export function ButtonLinkDemo() {
       },
     ],
   },
+  "dropdown-menu": {
+        name: "Dropdown Menu",
+        description: "Displays a menu to the user — such as a set of actions or functions — triggered by a button.",
+        installation: "dropdown-menu",
+        preview: DropdownMenuDemo,
+        previewCode: `import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent } from "@/components/ui/dropdown-menu";
+
+export function DropdownMenuDemo() {
+    return (
+        <DropdownMenu>
+            <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                    <DropdownMenuItem>Profile</DropdownMenuItem>
+                    <DropdownMenuItem>Billing</DropdownMenuItem>
+                    <DropdownMenuItem>Settings</DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>Invite User</DropdownMenuSubTrigger>
+                    <DropdownMenuSubContent>
+                        <DropdownMenuItem>Email</DropdownMenuItem>
+                        <DropdownMenuItem>Message</DropdownMenuItem>
+                    </DropdownMenuSubContent>
+                </DropdownMenuSub>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem disabled>API (disabled)</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Log out</DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
+    )
+}`,
+        usage: [
+            `import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";`,
+            `<DropdownMenu>
+  <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuItem>Profile</DropdownMenuItem>
+    <DropdownMenuItem>Settings</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>`,
+        ],
+    },
   terminal: {
     name: "Terminal",
     description: "A terminal component",

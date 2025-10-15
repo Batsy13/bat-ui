@@ -9,6 +9,7 @@ import {
   Dispatch,
 } from "react";
 import { cn } from "../../lib/utils";
+import { ChevronRight } from "lucide-react";
 
 interface DropdownContextType {
   isOpen: boolean;
@@ -26,61 +27,62 @@ const useDropdown = () => {
 };
 
 interface DropdownSubMenuContextType {
-    isSubOpen: boolean;
-    setIsSubOpen: Dispatch<SetStateAction<boolean>>;
+  isSubOpen: boolean;
+  setIsSubOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const DropdownSubMenuContext = createContext<DropdownSubMenuContextType | null>(null);
+const DropdownSubMenuContext = createContext<DropdownSubMenuContextType | null>(
+  null
+);
 
 const useSubMenu = () => {
-    const context = useContext(DropdownSubMenuContext);
-    if (!context) {
-        throw new Error("useSubMenu deve ser usado dentro de um DropdownMenuSub");
-    }
-    return context;
+  const context = useContext(DropdownSubMenuContext);
+  if (!context) {
+    throw new Error("useSubMenu deve ser usado dentro de um DropdownMenuSub");
+  }
+  return context;
 };
 
-
 export function DropdownMenu({ children }: { children: ReactNode }) {
-    const [isOpen, setIsOpen] = useState(false);
-    const menuRef = useRef<HTMLDivElement>(null);
-    const value = { isOpen, setIsOpen };
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const value = { isOpen, setIsOpen };
 
-    useEffect(() => {
-        if (!isOpen) return;
+  useEffect(() => {
+    if (!isOpen) return;
 
-        const handleClickOutside = (event: MouseEvent) => {
-            if (
-                menuRef.current &&
-                event.target instanceof Node &&
-                !menuRef.current.contains(event.target)
-            ) {
-                setIsOpen(false);
-            }
-        };
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        event.target instanceof Node &&
+        !menuRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
 
-        const handleEscape = (event: KeyboardEvent) => {
-            if (event.key === "Escape") {
-                setIsOpen(false);
-            }
-        };
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
 
-        document.addEventListener("mousedown", handleClickOutside);
-        document.addEventListener("keydown", handleEscape);
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
 
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-            document.removeEventListener("keydown", handleEscape);
-        };
-    }, [isOpen]);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isOpen]);
 
-    return (
-        <DropdownContext.Provider value={value}>
-            <div ref={menuRef} className="relative w-fit text-left">
-                {children}
-            </div>
-        </DropdownContext.Provider>
-    );
+  return (
+    <DropdownContext.Provider value={value}>
+      <div ref={menuRef} className="relative w-fit text-left">
+        {children}
+      </div>
+    </DropdownContext.Provider>
+  );
 }
 
 export function DropdownMenuTrigger({
@@ -96,7 +98,7 @@ export function DropdownMenuTrigger({
       type="button"
       onClick={() => setIsOpen((prev) => !prev)}
       className={cn(
-        "flex items-center justify-center gap-2 rounded-md text-sm font-medium px-4 py-2 bg-[#101010] border border-[#262626]",
+        "flex items-center justify-center gap-2 rounded-md bg-[#101010] px-4 py-2 text-sm font-medium border border-[#262626]",
         className
       )}
       aria-haspopup="true"
@@ -121,7 +123,10 @@ export function DropdownMenuContent({
   return isOpen ? (
     <div
       style={{ marginTop: `${sideOffset}px` }}
-      className={cn("z-50 min-w-[12rem] bg-[#101010] p-2 rounded-sm border border-[#262626]", isOpen ? "opacity-100" : "opacity-0", className )}
+      className={cn(
+        "absolute left-0 top-full z-50 min-w-[12rem] rounded-sm border border-[#262626] bg-[#101010] p-2",
+        className
+      )}
       role="menu"
       aria-orientation="vertical"
     >
@@ -164,9 +169,9 @@ export function DropdownMenuItem({
     <div
       onClick={handleSelect}
       className={cn(
-        "relative flex items-center px-2 py-1.5 text-sm outline-none transition-colors cursor-pointer rounded-sm",
+        "relative flex cursor-pointer items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors",
         disabled
-          ? "text-[#353535] cursor-not-allowed"
+          ? "cursor-not-allowed text-[#353535]"
           : "text-white hover:bg-[#262626]",
         className
       )}
@@ -198,48 +203,60 @@ export function DropdownMenuSeparator({ className }: { className?: string }) {
 }
 
 export function DropdownMenuSub({ children }: { children: ReactNode }) {
-    const [isSubOpen, setIsSubOpen] = useState(false);
-    const value = { isSubOpen, setIsSubOpen };
+  const [isSubOpen, setIsSubOpen] = useState(false);
+  const value = { isSubOpen, setIsSubOpen };
 
-    return (
-        <DropdownSubMenuContext.Provider value={value}>
-            <div
-                className="relative"
-                onMouseEnter={() => setIsSubOpen(true)}
-                onMouseLeave={() => setIsSubOpen(false)}
-            >
-                {children}
-            </div>
-        </DropdownSubMenuContext.Provider>
-    );
+  return (
+    <DropdownSubMenuContext.Provider value={value}>
+      <div
+        className="relative"
+        onMouseEnter={() => setIsSubOpen(true)}
+        onMouseLeave={() => setIsSubOpen(false)}
+      >
+        {children}
+      </div>
+    </DropdownSubMenuContext.Provider>
+  );
 }
 
-export function DropdownMenuSubTrigger({ children, className }: { children: ReactNode; className?: string; }) {
-    return (
-        <div
-            className={cn(
-                "relative flex items-center px-2 py-1.5 text-sm outline-none transition-colors cursor-pointer rounded-sm text-white hover:bg-[#262626]",
-                className
-            )}
-            role="menuitem"
-        >
-            {children}
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-auto h-4 w-4"><path d="m9 18 6-6-6-6" /></svg>
-        </div>
-    );
+export function DropdownMenuSubTrigger({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "relative flex cursor-pointer items-center justify-between rounded-sm px-2 py-1.5 text-sm text-white outline-none transition-colors hover:bg-[#262626]",
+        className
+      )}
+      role="menuitem"
+    >
+      {children}
+      <ChevronRight size={20}/>
+    </div>
+  );
 }
 
-export function DropdownMenuSubContent({ children, className }: { children: ReactNode; className?: string; }) {
-    const { isSubOpen } = useSubMenu();
+export function DropdownMenuSubContent({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  const { isSubOpen } = useSubMenu();
 
-    return isSubOpen ? (
-        <div
-            className={cn(
-                "absolute left-full top-[-4px] z-50 min-w-[12rem] bg-[#101010] p-2 rounded-sm border border-[#262626]",
-                className
-            )}
-        >
-            {children}
-        </div>
-    ) : null;
+  return isSubOpen ? (
+    <div
+      className={cn(
+        "absolute left-full top-[-4px] z-50 min-w-[12rem] rounded-sm border border-[#262626] bg-[#101010] p-2",
+        className
+      )}
+    >
+      {children}
+    </div>
+  ) : null;
 }

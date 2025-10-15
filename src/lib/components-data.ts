@@ -13,8 +13,14 @@ import {
 } from "../components/demos/button-demo";
 import { AlertDemo } from "../components/demos/alert-demo";
 import { AlertDialogDemo } from "../components/demos/alert-dialog-demo";
-import { TerminalBash, TerminalCode, TerminalComponentTerminal, TerminalDemo } from "../components/demos/terminal-demo";
+import {
+  TerminalBash,
+  TerminalCode,
+  TerminalComponentTerminal,
+  TerminalDemo,
+} from "../components/demos/terminal-demo";
 import { DropdownMenuDemo } from "../components/demos/dropdown-menu-demo";
+import { BreadcrumbDemo } from "@/components/demos/breadcrumb-demo";
 
 export type ComponentData = {
   name: string;
@@ -205,6 +211,79 @@ export function BadgeDemo() {
       `<Badge variant="default | outline | secondary | destructive">Badge</Badge>`,
     ],
   },
+  breadcrumb: {
+    name: "Breadcrumb",
+    description:
+      "Indicates the current page's location within a navigational hierarchy.",
+    installation: "breadcrumb",
+    preview: BreadcrumbDemo,
+    previewCode: `import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  BreadcrumbPage,
+} from "@/components/ui/breadcrumb";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "../ui/dropdown-menu";
+import { Ellipsis } from "lucide-react";
+
+export function BreadcrumbDemo() {
+  return (
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="bg-transparent p-0 border-0 cursor-pointer">
+              <Ellipsis className="size-4" />
+              <span className="sr-only">Toggle menu</span>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>Documentation</DropdownMenuItem>
+              <DropdownMenuItem>Themes</DropdownMenuItem>
+              <DropdownMenuItem>GitHub</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/docs/components/breadcrumb">
+            <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+  );
+}
+`,
+    usage: [
+      `import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from "@/components/ui/breadcrumb";`,
+      `<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Components</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>`,
+    ],
+  },
   button: {
     name: "Button",
     description: "An interactive element that triggers an action when clicked.",
@@ -286,11 +365,12 @@ export function ButtonLinkDemo() {
     ],
   },
   "dropdown-menu": {
-        name: "Dropdown Menu",
-        description: "Displays a menu to the user — such as a set of actions or functions — triggered by a button.",
-        installation: "dropdown-menu",
-        preview: DropdownMenuDemo,
-        previewCode: `import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent } from "@/components/ui/dropdown-menu";
+    name: "Dropdown Menu",
+    description:
+      "Displays a menu to the user — such as a set of actions or functions — triggered by a button.",
+    installation: "dropdown-menu",
+    preview: DropdownMenuDemo,
+    previewCode: `import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent } from "@/components/ui/dropdown-menu";
 
 export function DropdownMenuDemo() {
     return (
@@ -320,17 +400,17 @@ export function DropdownMenuDemo() {
         </DropdownMenu>
     )
 }`,
-        usage: [
-            `import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";`,
-            `<DropdownMenu>
+    usage: [
+      `import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";`,
+      `<DropdownMenu>
   <DropdownMenuTrigger>Open</DropdownMenuTrigger>
   <DropdownMenuContent>
     <DropdownMenuItem>Profile</DropdownMenuItem>
     <DropdownMenuItem>Settings</DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>`,
-        ],
-    },
+    ],
+  },
   terminal: {
     name: "Terminal",
     description: "A terminal component",

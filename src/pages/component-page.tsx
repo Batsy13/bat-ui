@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import { componentsData } from "../lib/components-data";
 import { Page404 } from "./404-not-found";
-import { ComponentPageTemplate } from "../components/component-page-template";
+import { ComponentPageTemplate } from "./component-page-template";
 
 export const ComponentPage = () => {
   const { componentName } = useParams<{ componentName: string }>();

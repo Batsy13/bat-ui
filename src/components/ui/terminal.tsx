@@ -34,9 +34,9 @@ export const Terminal = ({ type = "code", code, library, className }: TerminalPr
     return (
         <>
             {type === "component-terminal" ? (
-                <div className={cn("relative flex w-full px-10 h-[450px] border border-[#262626] rounded-xl overflow-auto", className)}>
+                <div className={cn("relative flex w-full px-10 h-[450px] border border-border rounded-xl overflow-auto", className)}>
                     <button
-                        className="absolute top-4 right-4 p-2 rounded-[8px] cursor-pointer hover:bg-[#262626] transition-all duration-300 ease-in-out"
+                        className="absolute top-4 right-4 p-2 rounded-[8px] cursor-pointer hover:bg-border transition-all duration-300 ease-in-out"
                         onClick={() => navigator.clipboard.writeText(code!)}
                     >
                         <Copy size={16} />
@@ -48,8 +48,8 @@ export const Terminal = ({ type = "code", code, library, className }: TerminalPr
                     </pre>
                 </div>
             ) : type === "bash" ? (
-                <div className={cn("flex flex-col w-full border border-[#262626] bg-[#101010] rounded-xl overflow-auto", className)}>
-                    <div className="flex justify-between items-center p-2 border-b border-[#262626]">
+                <div className={cn("flex flex-col w-full border border-border bg-card rounded-xl overflow-auto", className)}>
+                    <div className="flex justify-between items-center p-2 border-b border-border">
                         <div className="flex items-center gap-3">
                             <TerminalIcon
                                 className="bg-[#727272] text-black rounded-[2px] p-0.5"
@@ -60,7 +60,7 @@ export const Terminal = ({ type = "code", code, library, className }: TerminalPr
                                 className={cn(
                                     "py-[1px] px-2 rounded-lg cursor-pointer",
                                     bash == "pnpm"
-                                        ? "bg-[#1E1E1E] border border-[#262626]"
+                                        ? "bg-[#1E1E1E] border border-border"
                                         : ""
                                 )}
                                 onClick={() => setBash("pnpm")}
@@ -71,7 +71,7 @@ export const Terminal = ({ type = "code", code, library, className }: TerminalPr
                                 className={cn(
                                     "py-[1px] px-2 rounded-lg cursor-pointer",
                                     bash == "npm"
-                                        ? "bg-[#1E1E1E] border border-[#262626]"
+                                        ? "bg-[#1E1E1E] border border-border"
                                         : ""
                                 )}
                                 onClick={() => setBash("npm")}
@@ -82,7 +82,7 @@ export const Terminal = ({ type = "code", code, library, className }: TerminalPr
                                 className={cn(
                                     "py-[1px] px-2 rounded-lg cursor-pointer",
                                     bash == "yarn"
-                                        ? "bg-[#1E1E1E] border border-[#262626]"
+                                        ? "bg-[#1E1E1E] border border-border"
                                         : ""
                                 )}
                                 onClick={() => setBash("yarn")}
@@ -93,7 +93,7 @@ export const Terminal = ({ type = "code", code, library, className }: TerminalPr
                                 className={cn(
                                     "py-[1px] px-2 rounded-lg cursor-pointer",
                                     bash == "bun"
-                                        ? "bg-[#1E1E1E] border border-[#262626]"
+                                        ? "bg-[#1E1E1E] border border-border"
                                         : ""
                                 )}
                                 onClick={() => setBash("bun")}
@@ -102,7 +102,7 @@ export const Terminal = ({ type = "code", code, library, className }: TerminalPr
                             </button>
                         </div>
                         <button
-                            className="p-2 rounded-[8px] cursor-pointer hover:bg-[#262626] transition-all duration-300 ease-in-out"
+                            className="p-2 rounded-[8px] cursor-pointer hover:bg-border transition-all duration-300 ease-in-out"
                             onClick={() =>
                                 navigator.clipboard.writeText(fullCommand!)
                             }
@@ -119,9 +119,9 @@ export const Terminal = ({ type = "code", code, library, className }: TerminalPr
                     </div>
                 </div>
             ) : (
-                <div className={cn("relative flex w-full p-5 h-fit max-h-[450px] border border-[#262626] rounded-xl overflow-auto bg-[#101010]", className)}>
+                <div className={cn("relative flex w-full p-5 h-fit max-h-[450px] border border-border rounded-xl overflow-auto bg-card", className)}>
                     <button
-                        className="absolute top-4 right-4 p-2 rounded-[8px] cursor-pointer hover:bg-[#262626] transition-all duration-300 ease-in-out"
+                        className="absolute top-4 right-4 p-2 rounded-[8px] cursor-pointer hover:bg-border transition-all duration-300 ease-in-out"
                         onClick={() => navigator.clipboard.writeText(code!)}
                     >
                         <Copy size={16} />

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
-import { NavSidebar } from "./nav-sidebar";
-import { Footer } from "./ui/footer";
+import { NavSidebar } from "../components/nav-sidebar";
+import { Footer } from "../components/ui/footer";
 
 export const DocsLayout = () => {
   return (

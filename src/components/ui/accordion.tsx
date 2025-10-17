@@ -19,7 +19,7 @@ const AccordionItem = ({ value, children, className }: AccordionItemProps) => {
     return (
         <div data-accordion-item-value={value} className={className}>
             {children}
-            <hr className="text-[#262626] my-2" />
+            <hr className="text-border my-2" />
         </div>
     );
 };

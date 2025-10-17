@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router";
 import { cn } from "../lib/utils";
 
-const components = [
+export const components = [
     { title: "Accordion", path: "/accordion" },
     { title: "Alert", path: "/alert" },
     { title: "Alert Dialog", path: "/alert-dialog" },
@@ -60,11 +60,11 @@ export const NavSidebar = () => {
 
     return (
         <aside className="h-screen pt-12 pl-3 overflow-y-scroll pb-14 no-scrollbar">
-            <div className="text-[#a7a7a7] px-3">Components</div>
+            <div className="text-description px-3">Components</div>
             <div className="py-4 text-white text-[14px] flex items-start gap-1 flex-col">
                 {components.map((item) => (
                     <Link
-                        className={cn("bg-transparent hover:bg-[#141414] px-3 py-[5px] cursor-pointer rounded-[5px]", pathname === `/docs/components${item.path}` ? "bg-secondary hover:bg-secondary" : "")}
+                        className={cn("bg-transparent hover:bg-border px-3 py-[5px] cursor-pointer rounded-[5px]", pathname === `/docs/components${item.path}` ? "bg-secondary hover:bg-secondary" : "")}
                         to={`/docs/components${item.path}`}
                         key={item.title}
                     >

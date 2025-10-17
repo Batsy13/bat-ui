@@ -17,7 +17,7 @@ type AlertDialogHeaderProps = {
 };
 
 const alertVariants = cva(
-    "bg-[#101010] relative w-full max-w-2xl rounded-[5px] p-6 flex flex-col gap-4",
+    "bg-card relative w-full max-w-2xl rounded-[5px] p-6 flex flex-col gap-4",
     {
         variants: {
             variant: {
@@ -88,7 +88,7 @@ const AlertDialogContent = ({
 const AlertDialogHeader = ({ title, description, className }: AlertDialogHeaderProps) => (
     <div className={cn("flex flex-col gap-2", className)}>
         <h2 className="text-lg font-semibold text-white">{title}</h2>
-        <p className="text-sm text-[#9C9C9C]">{description}</p>
+        <p className="text-sm text-description">{description}</p>
     </div>
 );
 

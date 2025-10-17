@@ -98,7 +98,7 @@ export function DropdownMenuTrigger({
       type="button"
       onClick={() => setIsOpen((prev) => !prev)}
       className={cn(
-        "flex items-center justify-center gap-2 rounded-md bg-[#101010] px-4 py-2 text-sm font-medium border border-[#262626]",
+        "flex items-center justify-center gap-2 rounded-md bg-card px-4 py-2 text-sm font-medium border border-border",
         className
       )}
       aria-haspopup="true"
@@ -124,7 +124,7 @@ export function DropdownMenuContent({
     <div
       style={{ marginTop: `${sideOffset}px` }}
       className={cn(
-        "absolute left-0 top-full z-50 min-w-[12rem] rounded-sm border border-[#262626] bg-[#101010] p-2",
+        "absolute left-0 top-full z-50 min-w-[12rem] rounded-sm border border-border bg-card p-2",
         className
       )}
       role="menu"
@@ -172,7 +172,7 @@ export function DropdownMenuItem({
         "relative flex cursor-pointer items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors",
         disabled
           ? "cursor-not-allowed text-[#353535]"
-          : "text-white hover:bg-[#262626]",
+          : "text-white hover:bg-border",
         className
       )}
       role="menuitem"
@@ -199,7 +199,7 @@ export function DropdownMenuLabel({
 }
 
 export function DropdownMenuSeparator({ className }: { className?: string }) {
-  return <div className={cn("my-1 h-px bg-[#262626]", className)} />;
+  return <div className={cn("my-1 h-px bg-border", className)} />;
 }
 
 export function DropdownMenuSub({ children }: { children: ReactNode }) {
@@ -229,7 +229,7 @@ export function DropdownMenuSubTrigger({
   return (
     <div
       className={cn(
-        "relative flex cursor-pointer items-center justify-between rounded-sm px-2 py-1.5 text-sm text-white outline-none transition-colors hover:bg-[#262626]",
+        "relative flex cursor-pointer items-center justify-between rounded-sm px-2 py-1.5 text-sm text-white outline-none transition-colors hover:bg-border",
         className
       )}
       role="menuitem"
@@ -252,7 +252,7 @@ export function DropdownMenuSubContent({
   return isSubOpen ? (
     <div
       className={cn(
-        "absolute left-full top-[-4px] z-50 min-w-[12rem] rounded-sm border border-[#262626] bg-[#101010] p-2",
+        "absolute left-full top-[-4px] z-50 min-w-[12rem] rounded-sm border border-border bg-[#101010] p-2",
         className
       )}
     >

@@ -14,7 +14,7 @@ type AlertItemsProps = {
 };
 
 const alertVariants = cva(
-    "w-full max-w-2xl bg-[#101010] rounded-[8px] p-4 flex flex-col gap-4",
+    "w-full max-w-2xl bg-card rounded-[8px] p-4 flex flex-col gap-4",
     {
         variants: {
             variant: {

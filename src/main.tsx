@@ -3,11 +3,12 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
 import AppLayout from "./app-layout";
 import { Home } from "./pages/home";
-import { DocsLayout } from "./components/docs-layout";
-import { DocsHome } from "./components/docs-home";
+import { DocsLayout } from "./pages/docs-layout";
+import { DocsHome } from "./pages/docs-home";
 import { Page404 } from "./pages/404-not-found";
 import { ComponentPage } from "./pages/component-page";
 import { TestPage } from "./pages/test-page";
+import { ComponentHome } from "./pages/component-home";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -16,9 +17,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route index element={<Home />}></Route>
         <Route path="docs" element={<DocsLayout />}>
           <Route index element={<DocsHome />}></Route>
-          <Route path="components">
-            <Route path=":componentName" element={<ComponentPage />} />
-          </Route>
+          <Route path="components" element={<ComponentHome />}></Route>
+          <Route path="components/:componentName" element={<ComponentPage />} />
           <Route path="test" element={<TestPage />}/>
         </Route>
       </Route>

@@ -1,6 +1,6 @@
 import { ComponentData } from "../lib/components-data";
-import { PreviewCode } from "./ui/preview-code";
-import { Terminal } from "./ui/terminal";
+import { PreviewCode } from "../components/ui/preview-code";
+import { Terminal } from "../components/ui/terminal";
 
 type ComponentPageTemplateProps = {
   data: ComponentData;

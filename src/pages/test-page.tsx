@@ -1,3 +1,4 @@
+import { Input } from "@/components/ui/input";
 
 export const TestPage = () => {
   return (
@@ -6,7 +7,9 @@ export const TestPage = () => {
         <h1>Test Page</h1>
         <p className="text-description">To try components</p>
       </div>
-
+      <div>
+        <Input type="text" placeholder="Email"/>
+      </div>
     </div>
   );
 };

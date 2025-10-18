@@ -20,7 +20,15 @@ import {
   TerminalDemo,
 } from "../components/demos/terminal-demo";
 import { DropdownMenuDemo } from "../components/demos/dropdown-menu-demo";
-import { BreadcrumbDemo } from "@/components/demos/breadcrumb-demo";
+import {
+  BreadcrumbDemo,
+  BreadcrumbExample,
+} from "@/components/demos/breadcrumb-demo";
+import {
+  InputDemo,
+  InputDisabledDemo,
+  InputPasswordDemo,
+} from "@/components/demos/input-demo";
 
 export type ComponentData = {
   name: string;
@@ -283,6 +291,56 @@ export function BreadcrumbDemo() {
   </BreadcrumbList>
 </Breadcrumb>`,
     ],
+    examples: [
+      {
+        title: "Custom separator",
+        preview: BreadcrumbExample,
+        code: `import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { ChevronRight } from "lucide-react";
+export function BreadcrumbExample() {
+  return (
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator>
+          <ChevronRight />
+        </BreadcrumbSeparator>
+        <BreadcrumbItem>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="bg-transparent p-0 border-0 cursor-pointer">
+              <Ellipsis className="size-4" />
+              <span className="sr-only">Toggle menu</span>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>Documentation</DropdownMenuItem>
+              <DropdownMenuItem>Themes</DropdownMenuItem>
+              <DropdownMenuItem>GitHub</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator>
+          <ChevronRight />
+        </BreadcrumbSeparator>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator>
+          <ChevronRight />
+        </BreadcrumbSeparator>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/docs/components/breadcrumb">
+            <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+  );
+}
+`,
+      },
+    ],
   },
   button: {
     name: "Button",
@@ -409,6 +467,42 @@ export function DropdownMenuDemo() {
     <DropdownMenuItem>Settings</DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>`,
+    ],
+  },
+  input: {
+    name: "Input",
+    description:
+      "Displays a form input field or a component that allows users to enter text.",
+    installation: "input",
+    preview: InputDemo,
+    previewCode: `import { Input } from "@/components/ui/input";
+
+export function InputDemo() {
+  return <Input type="text" placeholder="Email" />
+}`,
+    usage: [
+      `import { Input } from "@/components/ui/input";`,
+      `<Input type="text" placeholder="Email" />`,
+    ],
+    examples: [
+      {
+        title: "Password",
+        preview: InputPasswordDemo,
+        code: `import { Input } from "@/components/ui/input";
+
+export function InputPasswordDemo() {
+  return <Input type="password" placeholder="Password" />
+}`,
+      },
+      {
+        title: "Disabled",
+        preview: InputDisabledDemo,
+        code: `import { Input } from "@/components/ui/input";
+
+export function InputDisabledDemo() {
+  return <Input type="text" placeholder="Email" disabled />
+}`,
+      },
     ],
   },
   terminal: {

@@ -12,7 +12,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "../ui/dropdown-menu";
-import { Ellipsis } from "lucide-react";
+import { ChevronRight, Ellipsis } from "lucide-react";
 
 export function BreadcrumbDemo() {
   return (
@@ -40,6 +40,48 @@ export function BreadcrumbDemo() {
           <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/docs/components/breadcrumb">
+            <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+  );
+}
+
+export function BreadcrumbExample() {
+  return (
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator>
+          <ChevronRight />
+        </BreadcrumbSeparator>
+        <BreadcrumbItem>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="bg-transparent p-0 border-0 cursor-pointer">
+              <Ellipsis className="size-4" />
+              <span className="sr-only">Toggle menu</span>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>Documentation</DropdownMenuItem>
+              <DropdownMenuItem>Themes</DropdownMenuItem>
+              <DropdownMenuItem>GitHub</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator>
+          <ChevronRight />
+        </BreadcrumbSeparator>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator>
+          <ChevronRight />
+        </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbLink href="/docs/components/breadcrumb">
             <BreadcrumbPage>Breadcrumb</BreadcrumbPage>

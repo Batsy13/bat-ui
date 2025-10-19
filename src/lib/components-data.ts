@@ -31,6 +31,7 @@ import {
 } from "@/components/demos/input-demo";
 import { CollapsibleDemo } from "@/components/demos/collapsible-demo";
 import { PopoverDemo } from "@/components/demos/popover-demo";
+import { TooltipDemo } from "@/components/demos/tooltip-demo";
 
 export type ComponentData = {
   name: string;
@@ -683,6 +684,35 @@ export const TerminalComponentTerminal = () => {
   return <Terminal type="component-terminal" code="Copy this text" library="bat/ui" className="p-4"/>
 }`,
       },
+    ],
+  },
+  tooltip: {
+    name: "Tooltip",
+    description: "A popup that displays information related to an element.",
+    installation: "tooltip",
+    preview: TooltipDemo,
+    previewCode: `import { Button } from "../ui/button";
+import { Tooltip, TooltipTrigger, TooltipContent } from "../ui/tooltip";
+
+export const TooltipDemo = () => {
+  return (
+    <Tooltip>
+      <TooltipTrigger>
+        <Button>Hover</Button>
+      </TooltipTrigger>
+      <TooltipContent>poggers</TooltipContent>
+    </Tooltip>
+  );
+};
+`,
+    usage: [
+      `import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";`,
+      `<Tooltip>
+  <TooltipTrigger>Hover me</TooltipTrigger>
+  <TooltipContent>
+    Tooltip content
+  </TooltipContent>
+</Tooltip>`,
     ],
   },
 };

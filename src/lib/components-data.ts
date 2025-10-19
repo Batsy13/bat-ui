@@ -30,6 +30,7 @@ import {
   InputPasswordDemo,
 } from "@/components/demos/input-demo";
 import { CollapsibleDemo } from "@/components/demos/collapsible-demo";
+import { PopoverDemo } from "@/components/demos/popover-demo";
 
 export type ComponentData = {
   name: string;
@@ -556,6 +557,84 @@ export function InputDisabledDemo() {
   return <Input type="text" placeholder="Email" disabled />
 }`,
       },
+    ],
+  },
+  popover: {
+    name: "Popover",
+    description:
+      "Displays rich content in a portal that floats above the trigger.",
+    installation: "popover",
+    preview: PopoverDemo,
+    previewCode: `import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
+
+export function PopoverDemo() {
+  return (
+    <Popover>
+      <PopoverTrigger>
+        <Button>Open</Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-80">
+        <div className="grid gap-4">
+          <div className="space-y-2">
+            <h4 className="leading-none font-medium">Dimensions</h4>
+            <p className="text-muted-foreground text-sm">
+              Set the dimensions for the layer.
+            </p>
+          </div>
+          <div className="grid gap-2">
+            <div className="grid grid-cols-3 items-center gap-4">
+              <label htmlFor="width">Width</label>
+              <Input
+                id="width"
+                defaultValue="100%"
+                className="col-span-2 h-8"
+              />
+            </div>
+            <div className="grid grid-cols-3 items-center gap-4">
+              <label htmlFor="maxWidth">Max. width</label>
+              <Input
+                id="maxWidth"
+                defaultValue="300px"
+                className="col-span-2 h-8"
+              />
+            </div>
+            <div className="grid grid-cols-3 items-center gap-4">
+              <label htmlFor="height">Height</label>
+              <Input
+                id="height"
+                defaultValue="25px"
+                className="col-span-2 h-8"
+              />
+            </div>
+            <div className="grid grid-cols-3 items-center gap-4">
+              <label>Max. height</label>
+              <Input
+                id="maxHeight"
+                defaultValue="none"
+                className="col-span-2 h-8"
+              />
+            </div>
+          </div>
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
+`,
+    usage: [
+      `import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";`,
+      `<Popover>
+  <PopoverTrigger>Open</PopoverTrigger>
+  <PopoverContent>
+    Place content for the popover here.
+  </PopoverContent>
+</Popover>`,
     ],
   },
   terminal: {

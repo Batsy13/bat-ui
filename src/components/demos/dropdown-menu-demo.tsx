@@ -9,7 +9,7 @@ import {
   DropdownMenuSub,
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
-} from "../ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 
 export function DropdownMenuDemo() {
   return (

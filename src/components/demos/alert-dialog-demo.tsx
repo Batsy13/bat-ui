@@ -6,7 +6,7 @@ import {
   AlertDialogFooter,
   AlertDialogCancel,
   AlertDialogAction,
-} from "../ui/alert-dialog";
+} from "@/components/ui/alert-dialog";
 
 export const AlertDialogDemo = () => {
   return (

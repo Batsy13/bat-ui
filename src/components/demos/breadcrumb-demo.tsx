@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "../ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 import { ChevronRight, Ellipsis } from "lucide-react";
 
 export function BreadcrumbDemo() {

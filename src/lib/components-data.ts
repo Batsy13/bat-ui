@@ -1,8 +1,8 @@
 import React from "react";
-import { AccordionDemo } from "../components/demos/accordion-demo";
-import { AspectRatioDemo } from "../components/demos/aspect-ratio-demo";
-import { AvatarDemo } from "../components/demos/avatar-demo";
-import { BadgeDemo } from "../components/demos/badge-demo";
+import { AccordionDemo } from "@/components/demos/accordion-demo";
+import { AspectRatioDemo } from "@/components/demos/aspect-ratio-demo";
+import { AvatarDemo } from "@/components/demos/avatar-demo";
+import { BadgeDemo } from "@/components/demos/badge-demo";
 import {
   ButtonDemo,
   ButtonDestructiveDemo,
@@ -10,16 +10,16 @@ import {
   ButtonLinkDemo,
   ButtonOutlineDemo,
   ButtonSecondaryDemo,
-} from "../components/demos/button-demo";
-import { AlertDemo } from "../components/demos/alert-demo";
-import { AlertDialogDemo } from "../components/demos/alert-dialog-demo";
+} from "@/components/demos/button-demo";
+import { AlertDemo } from "@/components/demos/alert-demo";
+import { AlertDialogDemo } from "@/components/demos/alert-dialog-demo";
 import {
   TerminalBash,
   TerminalCode,
   TerminalComponentTerminal,
   TerminalDemo,
-} from "../components/demos/terminal-demo";
-import { DropdownMenuDemo } from "../components/demos/dropdown-menu-demo";
+} from "@/components/demos/terminal-demo";
+import { DropdownMenuDemo } from "@/components/demos/dropdown-menu-demo";
 import {
   BreadcrumbDemo,
   BreadcrumbExample,
@@ -32,6 +32,7 @@ import {
 import { CollapsibleDemo } from "@/components/demos/collapsible-demo";
 import { PopoverDemo } from "@/components/demos/popover-demo";
 import { TooltipDemo } from "@/components/demos/tooltip-demo";
+import { CardDemo } from "@/components/demos/card-demo";
 
 export type ComponentData = {
   name: string;
@@ -241,7 +242,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "../ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 import { Ellipsis } from "lucide-react";
 
 export function BreadcrumbDemo() {
@@ -425,18 +426,105 @@ export function ButtonLinkDemo() {
       },
     ],
   },
+  card: {
+    name: "Card",
+    description: "A container component with header, content, and footer sections.",
+    installation: "card",
+    preview: CardDemo,
+    previewCode: `import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+
+export const CardDemo = () => {
+  return (
+    <Card className="w-full max-w-sm">
+      <CardHeader>
+        <CardTitle>Login to your account</CardTitle>
+        <CardDescription>
+          Enter your email below to login to your account
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form>
+          <div className="flex flex-col gap-6">
+            <div className="grid gap-2">
+              <label htmlFor="email">Email</label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                required
+              />
+            </div>
+            <div className="grid gap-2">
+              <div className="flex items-center">
+                <label htmlFor="password">Password</label>
+                <a
+                  href="#"
+                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                >
+                  Forgot your password?
+                </a>
+              </div>
+              <Input id="password" type="password" required />
+            </div>
+          </div>
+        </form>
+      </CardContent>
+      <CardFooter className="flex-col gap-2">
+        <Button type="submit" className="w-full bg-white text-black hover:bg-white/80">
+          Login
+        </Button>
+        <Button variant="default" className="w-full bg-black">
+          Login with Google
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+};
+`,
+    usage: [
+      `import { 
+  Card, 
+  CardHeader, 
+  CardTitle, 
+  CardDescription, 
+  CardContent, 
+  CardFooter 
+} from "@/components/ui/card";`,
+      `<Card>
+  <CardHeader>
+    <CardTitle>Title</CardTitle>
+    <CardDescription>Description</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Content</p>
+  </CardContent>
+  <CardFooter>
+    <p>Footer</p>
+  </CardFooter>
+</Card>`,
+    ],
+  },
   collapsible: {
     name: "Collapsible",
     description: "An interactive component which expands/collapses content.",
     installation: "collapsible",
     preview: CollapsibleDemo,
     previewCode: `import { ChevronsUpDown } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleTrigger,
   CollapsibleContent,
-} from "../ui/collapsible";
+} from "@/components/ui/collapsible";
 
 export const CollapsibleDemo = () => {
   return (
@@ -691,8 +779,8 @@ export const TerminalComponentTerminal = () => {
     description: "A popup that displays information related to an element.",
     installation: "tooltip",
     preview: TooltipDemo,
-    previewCode: `import { Button } from "../ui/button";
-import { Tooltip, TooltipTrigger, TooltipContent } from "../ui/tooltip";
+    previewCode: `import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 
 export const TooltipDemo = () => {
   return (

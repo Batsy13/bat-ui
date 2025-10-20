@@ -1,4 +1,4 @@
-import { Terminal } from "../ui/terminal"
+import { Terminal } from "@/components/ui/terminal"
 
 export const TerminalDemo = () => {
   return <Terminal type="bash" code="button" library="bat/ui"/>

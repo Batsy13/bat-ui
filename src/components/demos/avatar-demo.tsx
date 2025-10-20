@@ -1,4 +1,4 @@
-import { Avatar } from "../ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 
 export const AvatarDemo = () => {
   return (

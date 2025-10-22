@@ -33,6 +33,7 @@ import { CollapsibleDemo } from "@/components/demos/collapsible-demo";
 import { PopoverDemo } from "@/components/demos/popover-demo";
 import { TooltipDemo } from "@/components/demos/tooltip-demo";
 import { CardDemo } from "@/components/demos/card-demo";
+import { HoverCardDemo } from "@/components/demos/hover-card-demo";
 
 export type ComponentData = {
   name: string;
@@ -210,7 +211,7 @@ export function AvatarDemo() {
 
 export function BadgeDemo() {
   return (
-    <div className="flex w-full flex-wrap gap-2">
+    <div className="flex flex-wrap w-full gap-2">
       <Badge>Primary</Badge>
       <Badge variant="secondary">Secondary</Badge>
       <Badge variant="destructive">Destructive</Badge>
@@ -255,7 +256,7 @@ export function BreadcrumbDemo() {
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <DropdownMenu>
-            <DropdownMenuTrigger className="bg-transparent p-0 border-0 cursor-pointer">
+            <DropdownMenuTrigger className="p-0 bg-transparent border-0 cursor-pointer">
               <Ellipsis className="size-4" />
               <span className="sr-only">Toggle menu</span>
             </DropdownMenuTrigger>
@@ -313,7 +314,7 @@ export function BreadcrumbExample() {
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <DropdownMenu>
-            <DropdownMenuTrigger className="bg-transparent p-0 border-0 cursor-pointer">
+            <DropdownMenuTrigger className="p-0 bg-transparent border-0 cursor-pointer">
               <Ellipsis className="size-4" />
               <span className="sr-only">Toggle menu</span>
             </DropdownMenuTrigger>
@@ -428,7 +429,8 @@ export function ButtonLinkDemo() {
   },
   card: {
     name: "Card",
-    description: "A container component with header, content, and footer sections.",
+    description:
+      "A container component with header, content, and footer sections.",
     installation: "card",
     preview: CardDemo,
     previewCode: `import { Button } from "@/components/ui/button";
@@ -468,7 +470,7 @@ export const CardDemo = () => {
                 <label htmlFor="password">Password</label>
                 <a
                   href="#"
-                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                  className="inline-block ml-auto text-sm underline-offset-4 hover:underline"
                 >
                   Forgot your password?
                 </a>
@@ -479,7 +481,7 @@ export const CardDemo = () => {
         </form>
       </CardContent>
       <CardFooter className="flex-col gap-2">
-        <Button type="submit" className="w-full bg-white text-black hover:bg-white/80">
+        <Button type="submit" className="w-full text-black bg-white hover:bg-white/80">
           Login
         </Button>
         <Button variant="default" className="w-full bg-black">
@@ -529,21 +531,21 @@ import {
 export const CollapsibleDemo = () => {
   return (
     <Collapsible>
-      <div className="max-w-2xl w-full">
+      <div className="w-full max-w-2xl">
         <CollapsibleTrigger className="flex items-center justify-between w-full p-2">
           <p>@Batsy13 starred 3 repositories</p>
-          <Button className="bg-transparent hover:bg-border p-2 h-fit">
+          <Button className="p-2 bg-transparent hover:bg-border h-fit">
             <ChevronsUpDown />
           </Button>
         </CollapsibleTrigger>
-        <div className="border border-border py-2 px-4 w-full rounded-md mb-2">
+        <div className="w-full px-4 py-2 mb-2 border rounded-md border-border">
           @shadcn-ui/ui
         </div>
         <CollapsibleContent className="flex flex-col gap-2">
-          <div className="border border-border py-2 px-4 w-full rounded-md">
+          <div className="w-full px-4 py-2 border rounded-md border-border">
             @radix-ui/primitives
           </div>
-          <div className="border border-border py-2 px-4 w-full rounded-md">
+          <div className="w-full px-4 py-2 border rounded-md border-border">
             @magicuidesign/magicui
           </div>
         </CollapsibleContent>
@@ -612,6 +614,52 @@ export function DropdownMenuDemo() {
 </DropdownMenu>`,
     ],
   },
+  "hover-card": {
+    name: "Hover Card",
+    description:
+      "For sighted users to preview content available behind a link.",
+    installation: "hover-card",
+    preview: HoverCardDemo,
+    previewCode: `import { Avatar } from "../ui/avatar";
+import { Button } from "../ui/button";
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "../ui/hover-card";
+
+export const HoverCardDemo = () => {
+  return (
+    <HoverCard>
+      <HoverCardTrigger>
+        <Button variant="link" className="text-white">
+          @nextjs
+        </Button>
+      </HoverCardTrigger>
+      <HoverCardContent className="w-80">
+        <div className="flex justify-between gap-4">
+          <Avatar name="RN" img="https://i.redd.it/unicurnujpqc1.jpeg"></Avatar>
+          <div className="space-y-1">
+            <h4 className="text-sm font-semibold">@nextjs</h4>
+            <p className="text-sm">
+              The React Framework – created and maintained by @vercel.
+            </p>
+            <div className="text-xs text-muted-foreground">
+              Joined December 2021
+            </div>
+          </div>
+        </div>
+      </HoverCardContent>
+    </HoverCard>
+  );
+};
+`,
+    usage: [
+      `import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";`,
+      `<HoverCard>
+  <HoverCardTrigger>Hover</HoverCardTrigger>
+  <HoverCardContent>
+    Content for the hover card.
+  </HoverCardContent>
+</HoverCard>`,
+    ],
+  },
   input: {
     name: "Input",
     description:
@@ -671,42 +719,42 @@ export function PopoverDemo() {
       <PopoverContent className="w-80">
         <div className="grid gap-4">
           <div className="space-y-2">
-            <h4 className="leading-none font-medium">Dimensions</h4>
-            <p className="text-muted-foreground text-sm">
+            <h4 className="font-medium leading-none">Dimensions</h4>
+            <p className="text-sm text-muted-foreground">
               Set the dimensions for the layer.
             </p>
           </div>
           <div className="grid gap-2">
-            <div className="grid grid-cols-3 items-center gap-4">
+            <div className="grid items-center grid-cols-3 gap-4">
               <label htmlFor="width">Width</label>
               <Input
                 id="width"
                 defaultValue="100%"
-                className="col-span-2 h-8"
+                className="h-8 col-span-2"
               />
             </div>
-            <div className="grid grid-cols-3 items-center gap-4">
+            <div className="grid items-center grid-cols-3 gap-4">
               <label htmlFor="maxWidth">Max. width</label>
               <Input
                 id="maxWidth"
                 defaultValue="300px"
-                className="col-span-2 h-8"
+                className="h-8 col-span-2"
               />
             </div>
-            <div className="grid grid-cols-3 items-center gap-4">
+            <div className="grid items-center grid-cols-3 gap-4">
               <label htmlFor="height">Height</label>
               <Input
                 id="height"
                 defaultValue="25px"
-                className="col-span-2 h-8"
+                className="h-8 col-span-2"
               />
             </div>
-            <div className="grid grid-cols-3 items-center gap-4">
+            <div className="grid items-center grid-cols-3 gap-4">
               <label>Max. height</label>
               <Input
                 id="maxHeight"
                 defaultValue="none"
-                className="col-span-2 h-8"
+                className="h-8 col-span-2"
               />
             </div>
           </div>
@@ -735,7 +783,7 @@ export function PopoverDemo() {
 
 export function TerminalDemo() {
   return (
-    <div className="flex w-full flex-wrap gap-2">
+    <div className="flex flex-wrap w-full gap-2">
       <Terminal type="bash" code="button" library="bat/ui"/>
     </div>
   )

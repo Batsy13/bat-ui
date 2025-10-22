@@ -29,7 +29,7 @@ const Avatar = ({ name, img }: AvatarProps) => {
     const showImage = img && !imageError;
 
     return (
-        <div className="flex items-center justify-center rounded-full size-12 overflow-hidden bg-secondary">
+        <div className="flex items-center justify-center rounded-full size-12 overflow-hidden bg-secondary flex-none">
             {showImage ? <img src={img} className="w-full h-full object-cover" onError={() => setImageError(true)} />: fallbackName }
         </div>
     );

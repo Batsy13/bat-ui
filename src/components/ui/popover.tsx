@@ -99,16 +99,19 @@ export function PopoverContent({
 }) {
   const { isOpen } = usePopover();
 
-  return isOpen ? (
+  return (
     <div
       style={{ marginTop: `${sideOffset}px` }}
       className={cn(
-        "absolute left-0 top-full z-50 min-w-[12rem] rounded-sm border border-border bg-card p-4",
+        "absolute left-0 top-full z-50 min-w-[12rem] rounded-sm border border-border bg-card p-4 transition-all duration-300",
+        isOpen
+          ? "opacity-100 pointer-events-auto translate-y-0 scale-100"
+          : "opacity-0 pointer-events-none -translate-y-2 scale-95",
         className
       )}
       role="dialog"
     >
       {children}
     </div>
-  ) : null;
+  );
 }

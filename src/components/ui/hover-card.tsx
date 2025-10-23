@@ -69,10 +69,10 @@ export function HoverCardContent({
       style={{ marginBottom: `${sideOffset}px` }}
       className={cn(
         "absolute top-full left-1/2 -translate-x-1/2 z-50 rounded-md border border-border bg-card px-3 py-2 text-sm h-fit p-4",
-        "transition-opacity duration-300",
+        "transition-all duration-300",
         isOpen
-          ? "opacity-100 pointer-events-auto"
-          : "opacity-0 pointer-events-none",
+          ? "opacity-100 pointer-events-auto translate-y-0 scale-100"
+          : "opacity-0 pointer-events-none -translate-y-2 scale-95",
         className
       )}
       role="tooltip"

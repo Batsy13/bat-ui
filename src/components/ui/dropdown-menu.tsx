@@ -120,11 +120,14 @@ export function DropdownMenuContent({
 }) {
   const { isOpen } = useDropdown();
 
-  return isOpen ? (
+  return (
     <div
       style={{ marginTop: `${sideOffset}px` }}
       className={cn(
-        "absolute left-0 top-full z-50 min-w-[12rem] rounded-sm border border-border bg-card p-2",
+        "absolute left-0 top-full z-50 min-w-[12rem] rounded-sm border border-border bg-card p-2 transition-all duration-300",
+        isOpen
+          ? "opacity-100 pointer-events-auto translate-y-0 scale-100"
+          : "opacity-0 pointer-events-none -translate-y-2 scale-95",
         className
       )}
       role="menu"
@@ -132,7 +135,7 @@ export function DropdownMenuContent({
     >
       {children}
     </div>
-  ) : null;
+  );
 }
 
 export function DropdownMenuGroup({
@@ -235,7 +238,7 @@ export function DropdownMenuSubTrigger({
       role="menuitem"
     >
       {children}
-      <ChevronRight size={20}/>
+      <ChevronRight size={20} />
     </div>
   );
 }
@@ -249,14 +252,17 @@ export function DropdownMenuSubContent({
 }) {
   const { isSubOpen } = useSubMenu();
 
-  return isSubOpen ? (
+  return (
     <div
       className={cn(
-        "absolute left-full top-[-4px] z-50 min-w-[12rem] rounded-sm border border-border bg-[#101010] p-2",
+        "absolute left-full top-[-4px] z-50 min-w-[12rem] rounded-sm border border-border bg-[#101010] p-2 transition-all duration-300",
+        isSubOpen
+          ? "opacity-100 pointer-events-auto translate-x-0 scale-100"
+          : "opacity-0 pointer-events-none -translate-x-2 scale-95",
         className
       )}
     >
       {children}
     </div>
-  ) : null;
+  );
 }

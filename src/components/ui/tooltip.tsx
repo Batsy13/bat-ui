@@ -64,16 +64,20 @@ export function TooltipContent({
 }) {
   const { isOpen } = useTooltip();
 
-  return isOpen ? (
+  return (
     <div
       style={{ marginBottom: `${sideOffset}px` }}
       className={cn(
-        "absolute bottom-full left-1/2 -translate-x-1/2 z-50 whitespace-nowrap rounded-md border border-border bg-card px-3 py-1.5 text-sm",
+        "absolute bottom-full left-1/2 -translate-x-1/2 z-50 rounded-md border border-border bg-card px-3 py-1.5 text-sm h-fit",
+        "transition-all duration-300",
+        isOpen
+          ? "opacity-100 pointer-events-auto translate-y-0 scale-100"
+          : "opacity-0 pointer-events-none translate-y-2 scale-95",
         className
       )}
       role="tooltip"
     >
       {children}
     </div>
-  ) : null;
+  );
 }

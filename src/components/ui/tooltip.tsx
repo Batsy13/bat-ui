@@ -23,7 +23,7 @@ const useTooltip = () => {
   return context;
 };
 
-export function Tooltip({ children }: { children: ReactNode }) {
+const Tooltip = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const value = { isOpen, setIsOpen };
 
@@ -32,15 +32,15 @@ export function Tooltip({ children }: { children: ReactNode }) {
       <div className="relative inline-block">{children}</div>
     </TooltipContext.Provider>
   );
-}
+};
 
-export function TooltipTrigger({
+const TooltipTrigger = ({
   children,
   className,
 }: {
   children: ReactNode;
   className?: string;
-}) {
+}) => {
   const { setIsOpen } = useTooltip();
   return (
     <span
@@ -51,9 +51,9 @@ export function TooltipTrigger({
       {children}
     </span>
   );
-}
+};
 
-export function TooltipContent({
+const TooltipContent = ({
   children,
   className,
   sideOffset = 4,
@@ -61,7 +61,7 @@ export function TooltipContent({
   children: ReactNode;
   className?: string;
   sideOffset?: number;
-}) {
+}) => {
   const { isOpen } = useTooltip();
 
   return (
@@ -80,4 +80,6 @@ export function TooltipContent({
       {children}
     </div>
   );
-}
+};
+
+export { Tooltip, TooltipTrigger, TooltipContent };

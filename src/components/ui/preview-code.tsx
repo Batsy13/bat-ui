@@ -7,7 +7,7 @@ type PreviewCodeProps = {
     code?: string;
 };
 
-export const PreviewCode = ({
+const PreviewCode = ({
     preview: PreviewComponent,
     code,
 }: PreviewCodeProps) => {
@@ -66,3 +66,5 @@ export const PreviewCode = ({
         </div>
     );
 };
+
+export { PreviewCode }

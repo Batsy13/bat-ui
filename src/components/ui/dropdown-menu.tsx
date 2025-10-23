@@ -43,7 +43,7 @@ const useSubMenu = () => {
   return context;
 };
 
-export function DropdownMenu({ children }: { children: ReactNode }) {
+const DropdownMenu = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const value = { isOpen, setIsOpen };
@@ -83,15 +83,15 @@ export function DropdownMenu({ children }: { children: ReactNode }) {
       </div>
     </DropdownContext.Provider>
   );
-}
+};
 
-export function DropdownMenuTrigger({
+const DropdownMenuTrigger = ({
   children,
   className,
 }: {
   children: ReactNode;
   className?: string;
-}) {
+}) => {
   const { isOpen, setIsOpen } = useDropdown();
   return (
     <button
@@ -107,9 +107,9 @@ export function DropdownMenuTrigger({
       {children}
     </button>
   );
-}
+};
 
-export function DropdownMenuContent({
+const DropdownMenuContent = ({
   children,
   className,
   sideOffset = 4,
@@ -117,7 +117,7 @@ export function DropdownMenuContent({
   children: ReactNode;
   className?: string;
   sideOffset?: number;
-}) {
+}) => {
   const { isOpen } = useDropdown();
 
   return (
@@ -136,19 +136,19 @@ export function DropdownMenuContent({
       {children}
     </div>
   );
-}
+};
 
-export function DropdownMenuGroup({
+const DropdownMenuGroup = ({
   children,
   className,
 }: {
   children: ReactNode;
   className?: string;
-}) {
+}) => {
   return <div className={className}>{children}</div>;
-}
+};
 
-export function DropdownMenuItem({
+const DropdownMenuItem = ({
   children,
   onSelect,
   className,
@@ -158,7 +158,7 @@ export function DropdownMenuItem({
   onSelect?: any;
   className?: string;
   disabled?: boolean;
-}) {
+}) => {
   const { setIsOpen } = useDropdown();
   const handleSelect = (e: any) => {
     if (disabled) return;
@@ -185,27 +185,27 @@ export function DropdownMenuItem({
       {children}
     </div>
   );
-}
+};
 
-export function DropdownMenuLabel({
+const DropdownMenuLabel = ({
   children,
   className,
 }: {
   children: ReactNode;
   className?: string;
-}) {
+}) => {
   return (
     <div className={cn("px-2 py-1.5 text-sm font-semibold", className)}>
       {children}
     </div>
   );
-}
+};
 
-export function DropdownMenuSeparator({ className }: { className?: string }) {
+const DropdownMenuSeparator = ({ className }: { className?: string }) => {
   return <div className={cn("my-1 h-px bg-border", className)} />;
-}
+};
 
-export function DropdownMenuSub({ children }: { children: ReactNode }) {
+const DropdownMenuSub = ({ children }: { children: ReactNode }) => {
   const [isSubOpen, setIsSubOpen] = useState(false);
   const value = { isSubOpen, setIsSubOpen };
 
@@ -220,15 +220,15 @@ export function DropdownMenuSub({ children }: { children: ReactNode }) {
       </div>
     </DropdownSubMenuContext.Provider>
   );
-}
+};
 
-export function DropdownMenuSubTrigger({
+const DropdownMenuSubTrigger = ({
   children,
   className,
 }: {
   children: ReactNode;
   className?: string;
-}) {
+}) => {
   return (
     <div
       className={cn(
@@ -241,15 +241,15 @@ export function DropdownMenuSubTrigger({
       <ChevronRight size={20} />
     </div>
   );
-}
+};
 
-export function DropdownMenuSubContent({
+const DropdownMenuSubContent = ({
   children,
   className,
 }: {
   children: ReactNode;
   className?: string;
-}) {
+}) => {
   const { isSubOpen } = useSubMenu();
 
   return (
@@ -265,4 +265,17 @@ export function DropdownMenuSubContent({
       {children}
     </div>
   );
-}
+};
+
+export {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+};

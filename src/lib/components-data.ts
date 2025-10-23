@@ -34,6 +34,7 @@ import { PopoverDemo } from "@/components/demos/popover-demo";
 import { TooltipDemo } from "@/components/demos/tooltip-demo";
 import { CardDemo } from "@/components/demos/card-demo";
 import { HoverCardDemo } from "@/components/demos/hover-card-demo";
+import { SkeletonDemo, SkeletonExample } from "@/components/demos/skeleton";
 
 export type ComponentData = {
   name: string;
@@ -773,6 +774,49 @@ export function PopoverDemo() {
   </PopoverContent>
 </Popover>`,
     ],
+  },
+  skeleton: {
+    name: "Skeleton",
+    description: "Use to show a placeholder while content is loading.",
+    installation: "skeleton",
+    preview: SkeletonDemo,
+    previewCode: `import { Skeleton } from "@/components/ui/skeleton"
+
+export function SkeletonDemo() {
+  return (
+    <div className="flex items-center space-x-4">
+      <Skeleton className="h-12 w-12 rounded-full" />
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-[250px]" />
+        <Skeleton className="h-4 w-[200px]" />
+      </div>
+    </div>
+  )
+}`,
+    usage: [
+      'import { Skeleton } from "@/components/ui/skeleton"',
+      '<Skeleton className="h-[20px] w-[100px] rounded-full" />',
+    ],
+    examples: [
+      {
+        title: "Card",
+        preview: SkeletonExample,
+        code: `import { Skeleton } from "@/components/ui/skeleton"
+        
+export function SkeletonExample() {
+  return (
+    <div className="flex flex-col space-y-3">
+      <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-[250px]" />
+        <Skeleton className="h-4 w-[200px]" />
+      </div>
+    </div>
+  )
+}
+`
+      }
+    ]
   },
   terminal: {
     name: "Terminal",

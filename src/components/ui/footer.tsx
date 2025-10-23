@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-export const Footer = () => {
+const Footer = () => {
     return (
         <footer className="flex items-center justify-center w-full py-12 text-[#BEBEBE]">
             <div>
@@ -18,3 +18,5 @@ export const Footer = () => {
         </footer>
     );
 };
+
+export { Footer }

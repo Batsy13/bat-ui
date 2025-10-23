@@ -25,7 +25,7 @@ const usePopover = () => {
   return context;
 };
 
-export function Popover({ children }: { children: ReactNode }) {
+const Popover = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
   const value = { isOpen, setIsOpen };
@@ -65,15 +65,15 @@ export function Popover({ children }: { children: ReactNode }) {
       </div>
     </PopoverContext.Provider>
   );
-}
+};
 
-export function PopoverTrigger({
+const PopoverTrigger = ({
   children,
   className,
 }: {
   children: ReactNode;
   className?: string;
-}) {
+}) => {
   const { isOpen, setIsOpen } = usePopover();
   return (
     <button
@@ -86,9 +86,9 @@ export function PopoverTrigger({
       {children}
     </button>
   );
-}
+};
 
-export function PopoverContent({
+const PopoverContent = ({
   children,
   className,
   sideOffset = 4,
@@ -96,7 +96,7 @@ export function PopoverContent({
   children: ReactNode;
   className?: string;
   sideOffset?: number;
-}) {
+}) => {
   const { isOpen } = usePopover();
 
   return (
@@ -114,4 +114,6 @@ export function PopoverContent({
       {children}
     </div>
   );
-}
+};
+
+export { Popover, PopoverTrigger, PopoverContent };

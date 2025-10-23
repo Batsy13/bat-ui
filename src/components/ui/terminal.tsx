@@ -9,7 +9,7 @@ type TerminalProps = {
     className?: string;
 };
 
-export const Terminal = ({ type = "code", code, library, className }: TerminalProps) => {
+const Terminal = ({ type = "code", code, library, className }: TerminalProps) => {
     const [bash, setBash] = useState("pnpm");
 
     let command = "";
@@ -136,3 +136,5 @@ export const Terminal = ({ type = "code", code, library, className }: TerminalPr
         </>
     );
 };
+
+export { Terminal }

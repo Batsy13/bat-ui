@@ -23,7 +23,7 @@ const useCollapsible = () => {
   return context;
 };
 
-export function Collapsible({ children }: { children: ReactNode }) {
+const Collapsible = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const value = { isOpen, setIsOpen };
 
@@ -34,13 +34,13 @@ export function Collapsible({ children }: { children: ReactNode }) {
   );
 }
 
-export function CollapsibleTrigger({
+const CollapsibleTrigger = ({
   children,
   className,
 }: {
   children: ReactNode;
   className?: string;
-}) {
+}) => {
   const { isOpen, setIsOpen } = useCollapsible();
   return (
     <button
@@ -54,13 +54,13 @@ export function CollapsibleTrigger({
   );
 }
 
-export function CollapsibleContent({
+const CollapsibleContent = ({
   children,
   className,
 }: {
   children: ReactNode;
   className?: string;
-}) {
+}) => {
   const { isOpen } = useCollapsible();
 
   return (
@@ -69,3 +69,5 @@ export function CollapsibleContent({
     </div>
   );
 }
+
+export { Collapsible, CollapsibleTrigger, CollapsibleContent }

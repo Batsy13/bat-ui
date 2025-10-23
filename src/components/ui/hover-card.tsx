@@ -23,7 +23,7 @@ const useHoverCard = () => {
   return context;
 };
 
-export function HoverCard({ children }: { children: ReactNode }) {
+const HoverCard = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const value = { isOpen, setIsOpen };
 
@@ -32,15 +32,15 @@ export function HoverCard({ children }: { children: ReactNode }) {
       <div className="relative inline-block">{children}</div>
     </HoverCardContext.Provider>
   );
-}
+};
 
-export function HoverCardTrigger({
+const HoverCardTrigger = ({
   children,
   className,
 }: {
   children: ReactNode;
   className?: string;
-}) {
+}) => {
   const { setIsOpen } = useHoverCard();
   return (
     <span
@@ -51,9 +51,9 @@ export function HoverCardTrigger({
       {children}
     </span>
   );
-}
+};
 
-export function HoverCardContent({
+const HoverCardContent = ({
   children,
   className,
   sideOffset = 4,
@@ -61,7 +61,7 @@ export function HoverCardContent({
   children: ReactNode;
   className?: string;
   sideOffset?: number;
-}) {
+}) => {
   const { isOpen } = useHoverCard();
 
   return (
@@ -80,4 +80,6 @@ export function HoverCardContent({
       {children}
     </div>
   );
-}
+};
+
+export { HoverCard, HoverCardTrigger, HoverCardContent };

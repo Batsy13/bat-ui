@@ -1,18 +1,52 @@
 import { ChevronDown } from "lucide-react";
 import { cn } from "../../lib/utils";
-import useAccordionStore from "../../store/accordion-store";
 import {
   AccordionProps,
   AccordionItemProps,
   AccordionTriggerProps,
   AccordionContentProps,
 } from "../../types/accordion";
-import { useState } from "react";
+import { useState, createContext, useContext } from "react";
 
-const Accordion = ({ children, defaultOpen, className }: AccordionProps) => {
-  useAccordionStore.setState({ openItem: defaultOpen ?? null });
+interface AccordionContextType {
+  openItems: string[];
+  toggleItem: (value: string) => void;
+}
 
-  return <div className={cn("flex flex-col", className)}>{children}</div>;
+const AccordionContext = createContext<AccordionContextType | undefined>(
+  undefined
+);
+
+const useAccordionContext = () => {
+  const context = useContext(AccordionContext);
+  if (!context) {
+    throw new Error(
+      "AccordionTrigger and AccordionContent must be used within an Accordion"
+    );
+  }
+  return context;
+};
+
+const Accordion = ({
+  children,
+  defaultOpenValues,
+  className,
+}: AccordionProps) => {
+  const [openItems, setOpenItems] = useState<string[]>(defaultOpenValues ?? []);
+
+  const toggleItem = (value: string) => {
+    setOpenItems((prevOpenItems) =>
+      prevOpenItems.includes(value)
+        ? prevOpenItems.filter((item) => item !== value)
+        : [...prevOpenItems, value]
+    );
+  };
+
+  return (
+    <AccordionContext.Provider value={{ openItems, toggleItem }}>
+      <div className={cn("flex flex-col", className)}>{children}</div>
+    </AccordionContext.Provider>
+  );
 };
 
 const AccordionItem = ({ value, children, className }: AccordionItemProps) => {
@@ -29,12 +63,12 @@ const AccordionTrigger = ({
   value,
   className,
 }: AccordionTriggerProps) => {
-  const { openItem, setOpenItem } = useAccordionStore();
+  const { openItems, toggleItem } = useAccordionContext();
   const [isHovered, setIsHovered] = useState(false);
-  const isOpen = openItem === value;
+  const isOpen = openItems.includes(value);
 
   const handleToggle = () => {
-    setOpenItem(isOpen ? null : value);
+    toggleItem(value);
   };
 
   return (
@@ -65,14 +99,14 @@ const AccordionContent = ({
   value,
   className,
 }: AccordionContentProps) => {
-  const { openItem } = useAccordionStore();
-  const isOpen = openItem === value;
+  const { openItems } = useAccordionContext();
+  const isOpen = openItems.includes(value);
 
   return (
     <div
       className={cn(
         "transition-all ease-in-out duration-300 overflow-hidden text-[#BEBEBE]",
-        isOpen ? "max-h-96 opacity-100" : "max-h-0 ",
+        isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
         className
       )}
     >

@@ -1,6 +1,6 @@
 import {
-  AlertDialogTrigger,
   AlertDialog,
+  AlertDialogTrigger,
   AlertDialogContent,
   AlertDialogHeader,
   AlertDialogFooter,
@@ -10,23 +10,21 @@ import {
 
 export const AlertDialogDemo = () => {
   return (
-    <>
+    <AlertDialog variant="destructive">
       <AlertDialogTrigger className="text-white bg-red-500 cursor-pointer hover:bg-red-600">
         Delete Account
       </AlertDialogTrigger>
 
-      <AlertDialog>
-        <AlertDialogContent>
-          <AlertDialogHeader
-            title="Are you Sure?"
-            description="This action cannot be undone. This will exclude all your data."
-          />
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancelar</AlertDialogCancel>
-            <AlertDialogAction>Continuar</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-    </>
+      <AlertDialogContent>
+        <AlertDialogHeader
+          title="Are you Sure?"
+          description="This action cannot be undone. This will exclude all your data."
+        />
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancelar</AlertDialogCancel>
+          <AlertDialogAction>Continuar</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 };

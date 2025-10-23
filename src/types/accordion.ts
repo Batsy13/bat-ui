@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 type AccordionProps = {
     children: ReactNode;
-    defaultOpen?: string;
+    defaultOpenValues?: string[];
     className?: string;
 };
 

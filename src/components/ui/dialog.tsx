@@ -1,73 +1,57 @@
-import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 import { createContext, ReactNode, useContext, useState } from "react";
 import { Button } from "./button";
 
-type AlertDialogVariant = "default" | "destructive";
+type DialogVariant = "default" | "destructive";
 
-type AlertDialogContextProps = {
+type DialogContextProps = {
   isOpen: boolean;
   open: () => void;
   close: () => void;
-  variant: AlertDialogVariant;
+  variant: DialogVariant;
 };
 
-type AlertDialogProps = {
+type DialogProps = {
   children: ReactNode;
-  variant?: AlertDialogVariant;
+  variant?: DialogVariant;
 };
 
-type AlertDialogHeaderProps = {
+type DialogHeaderProps = {
   title: string;
   description?: string;
   className?: string;
 };
 
-const AlertDialogContext = createContext<AlertDialogContextProps | null>(null);
+const DialogContext = createContext<DialogContextProps | null>(null);
 
-const useAlertDialog = () => {
-  const context = useContext(AlertDialogContext);
+const useDialog = () => {
+  const context = useContext(DialogContext);
   if (!context) {
-    throw new Error("useAlertDialog must be used within an AlertDialog provider");
+    throw new Error("useDialog must be used within a Dialog provider");
   }
   return context;
 };
 
-const alertVariants = cva(
-  "bg-card relative w-full max-w-2xl rounded-[5px] p-6 flex flex-col gap-4",
-  {
-    variants: {
-      variant: {
-        default: "",
-        destructive: "text-destructive",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-    },
-  },
-);
-
-const AlertDialog = ({ children, variant = "default" }: AlertDialogProps) => {
+const Dialog = ({ children, variant = "default" }: DialogProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const open = () => setIsOpen(true);
   const close = () => setIsOpen(false);
 
   return (
-    <AlertDialogContext.Provider value={{ isOpen, open, close, variant }}>
+    <DialogContext.Provider value={{ isOpen, open, close, variant }}>
       {children}
-    </AlertDialogContext.Provider>
+    </DialogContext.Provider>
   );
 };
 
-const AlertDialogTrigger = ({
+const DialogTrigger = ({
   children,
   className,
 }: {
   children: ReactNode;
   className?: string;
 }) => {
-  const { open } = useAlertDialog();
+  const { open } = useDialog();
   return (
     <Button onClick={open} className={cn("w-fit", className)}>
       {children}
@@ -75,14 +59,14 @@ const AlertDialogTrigger = ({
   );
 };
 
-const AlertDialogContent = ({
+const DialogContent = ({
   children,
   className,
 }: {
   children: ReactNode;
   className?: string;
-} & VariantProps<typeof alertVariants>) => {
-  const { isOpen, close, variant } = useAlertDialog();
+}) => {
+  const { isOpen, close } = useDialog();
 
   if (!isOpen) {
     return null;
@@ -94,8 +78,11 @@ const AlertDialogContent = ({
       onClick={close}
     >
       <div
-        role="alertdialog"
-        className={cn(alertVariants({ variant }), className)}
+        role="dialog"
+        className={cn(
+          "bg-card relative w-full max-w-2xl rounded-[5px] p-6 flex flex-col gap-4",
+          className,
+        )}
         onClick={(e) => e.stopPropagation()}
       >
         {children}
@@ -104,23 +91,23 @@ const AlertDialogContent = ({
   );
 };
 
-const AlertDialogHeader = ({
+const DialogHeader = ({
   title,
   description,
   className,
-}: AlertDialogHeaderProps) => (
+}: DialogHeaderProps) => (
   <div className={cn("flex flex-col gap-2", className)}>
     <h2 className="text-lg font-semibold text-white">{title}</h2>
     <p className="text-sm text-description">{description}</p>
   </div>
 );
 
-const AlertDialogFooter = ({ children }: { children: ReactNode }) => (
+const DialogFooter = ({ children }: { children: ReactNode }) => (
   <div className="flex justify-end w-full gap-2">{children}</div>
 );
 
-const AlertDialogCancel = ({ children }: { children: ReactNode }) => {
-  const { close } = useAlertDialog();
+const DialogCancel = ({ children }: { children: ReactNode }) => {
+  const { close } = useDialog();
   return (
     <Button
       className="border border-white cursor-pointer hover:bg-[#090909]"
@@ -131,7 +118,7 @@ const AlertDialogCancel = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const AlertDialogAction = ({
+const DialogAction = ({
   children,
   onConfirm,
   className,
@@ -140,7 +127,7 @@ const AlertDialogAction = ({
   onConfirm?: () => void;
   className?: string;
 }) => {
-  const { close, variant } = useAlertDialog();
+  const { close, variant } = useDialog();
 
   const handleClick = () => {
     if (onConfirm) {
@@ -166,11 +153,11 @@ const AlertDialogAction = ({
 };
 
 export {
-  AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogFooter,
-  AlertDialogCancel,
-  AlertDialogAction,
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogCancel,
+  DialogAction,
 };

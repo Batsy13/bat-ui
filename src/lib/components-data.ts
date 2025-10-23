@@ -35,6 +35,7 @@ import { TooltipDemo } from "@/components/demos/tooltip-demo";
 import { CardDemo } from "@/components/demos/card-demo";
 import { HoverCardDemo } from "@/components/demos/hover-card-demo";
 import { SkeletonDemo, SkeletonExample } from "@/components/demos/skeleton";
+import { DialogDemo } from "@/components/demos/dialog-demo";
 
 export type ComponentData = {
   name: string;
@@ -568,6 +569,70 @@ export const CollapsibleDemo = () => {
 </Collapsible>`,
     ],
   },
+  dialog: {
+    name: "Dialog",
+    description: "A component overlaid on the primary window",
+    installation: "dialog",
+    preview: DialogDemo,
+    previewCode: `import {
+  Dialog,
+  DialogAction,
+  DialogCancel,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "../ui/input";
+
+export function DialogDemo() {
+  return (
+    <Dialog>
+      <DialogTrigger>Open Dialog</DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader
+          title="Edit profile"
+          description="Make changes to your profile here. Click save when you're
+              done."
+        ></DialogHeader>
+        <div className="grid gap-4">
+          <div className="grid gap-3">
+            <label htmlFor="name-1">Name</label>
+            <Input id="name-1" name="name" defaultValue="Pedro Costa" />
+          </div>
+          <div className="grid gap-3">
+            <label htmlFor="username-1">Username</label>
+            <Input id="username-1" name="username" defaultValue="@Batsy13" />
+          </div>
+        </div>
+        <DialogFooter>
+          <DialogCancel>Cancel</DialogCancel>
+          <DialogAction>Save Changes</DialogAction>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+`,
+    usage: [
+      `import {
+  Dialog,
+  DialogAction,
+  DialogCancel,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTrigger,
+} from "@/components/ui/dialog"`,
+      `<Dialog>
+  <DialogTrigger>Open</DialogTrigger>
+  <DialogContent>
+    <DialogHeader title="Are you absolutely sure?" description="This action cannot be undone. This will permanently delete your account and remove your data from our servers.">
+    </DialogHeader>
+  </DialogContent>
+</Dialog>`,
+    ],
+  },
   "dropdown-menu": {
     name: "Dropdown Menu",
     description:
@@ -814,9 +879,9 @@ export function SkeletonExample() {
     </div>
   )
 }
-`
-      }
-    ]
+`,
+      },
+    ],
   },
   terminal: {
     name: "Terminal",

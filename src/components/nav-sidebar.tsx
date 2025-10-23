@@ -14,7 +14,6 @@ export const components = [
     { title: "Card", path: "/card" },
     { title: "Carousel", path: "/carousel" },
     { title: "Chart", path: "/chart" },
-    { title: "Checkbox", path: "/checkbox" },
     { title: "Collapsible", path: "/collapsible" },
     { title: "Combobox", path: "/combobox" },
     { title: "Command", path: "/command" },

@@ -1,8 +1,13 @@
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 export const AccordionDemo = () => {
   return (
-    <Accordion defaultOpen="item-1">
+    <Accordion defaultOpenValues={["item-1"]}>
       <AccordionItem value="item-1">
         <AccordionTrigger value="item-1">
           What's the difference between the Basic and Pro plans?

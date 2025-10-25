@@ -9,7 +9,7 @@ export const OnThisPageSidebar = ({ data }: OnThisPageSidebarProps) => {
   const hasExamples = data.examples && data.examples.length > 0;
 
   return (
-    <aside className="w-[300px] h-full bg-background text-white p-8 sticky top-0">
+    <aside className="hidden xl:block w-[300px] h-full bg-background text-white p-8 sticky top-0">
       <h4 className="font-medium mb-4 text-sm">On this page</h4>
       <nav>
         <ul className="flex flex-col gap-3 text-sm text-description">

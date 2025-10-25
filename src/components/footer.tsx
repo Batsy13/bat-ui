@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
     return (
-        <footer className="flex items-center justify-center w-full py-12 text-[#BEBEBE]">
+        <footer className="flex items-center justify-center text-center w-full py-12 text-[#BEBEBE]">
             <div>
                 Built by{" "}
                 <Link

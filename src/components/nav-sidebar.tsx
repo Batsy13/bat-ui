@@ -58,8 +58,8 @@ export const NavSidebar = () => {
     const { pathname } = useLocation();
 
     return (
-        <aside className="h-screen pt-12 pl-3 overflow-y-scroll pb-14 no-scrollbar">
-            <div className="text-description px-3">Components</div>
+        <aside className="hidden h-screen pt-12 pl-3 overflow-y-scroll pb-14 no-scrollbar lg:block">
+            <div className="px-3 text-description">Components</div>
             <div className="py-4 text-white text-[14px] flex items-start gap-1 flex-col">
                 {components.map((item) => (
                     <Link

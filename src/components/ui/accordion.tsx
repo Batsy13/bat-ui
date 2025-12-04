@@ -1,12 +1,30 @@
 import { ChevronDown } from "lucide-react";
 import { cn } from "../../lib/utils";
-import {
-  AccordionProps,
-  AccordionItemProps,
-  AccordionTriggerProps,
-  AccordionContentProps,
-} from "../../types/accordion";
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, ReactNode } from "react";
+
+type AccordionProps = {
+    children: ReactNode;
+    defaultOpenValues?: string[];
+    className?: string;
+};
+
+type AccordionItemProps = {
+    children: ReactNode;
+    value: string;
+    className?: string;
+};
+
+type AccordionTriggerProps = {
+    children: ReactNode;
+    value: string;
+    className?: string;
+};
+
+type AccordionContentProps = {
+    children: ReactNode;
+    value: string;
+    className?: string;
+};
 
 interface AccordionContextType {
   openItems: string[];

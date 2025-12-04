@@ -32,6 +32,8 @@ import {
 import { CollapsibleDemo } from "@/components/demos/collapsible-demo";
 import { PopoverDemo } from "@/components/demos/popover-demo";
 import { TooltipDemo } from "@/components/demos/tooltip-demo";
+import { CalendarDemo } from "@/components/demos/calendar-demo";
+import { CarouselDemo } from "@/components/demos/carousel-demo";
 import { CardDemo } from "@/components/demos/card-demo";
 import { HoverCardDemo } from "@/components/demos/hover-card-demo";
 import { SkeletonDemo, SkeletonExample } from "@/components/demos/skeleton";
@@ -430,6 +432,87 @@ export function ButtonLinkDemo() {
       },
     ],
   },
+  calendar: {
+    name: "Calendar",
+    description: "A date field component that allows users to enter and edit date.",
+    installation: "calendar",
+    preview: CalendarDemo,
+    previewCode: `import * as React from "react";
+import { Calendar } from "@/components/ui/calendar";
+
+export function CalendarDemo() {
+  const [date, setDate] = React.useState<Date | undefined>(new Date());
+
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <Calendar
+        value={date}
+        onChange={setDate}
+        className="rounded-md border"
+      />
+      <div className="text-sm text-zinc-500">
+        Selected: {date ? date.toLocaleDateString() : "None"}
+      </div>
+    </div>
+  );
+}`,
+    usage: [
+      `import { Calendar } from "@/components/ui/calendar";`,
+      `<Calendar
+  value={date}
+  onChange={setDate}
+  className="rounded-md border"
+/>`,
+    ],
+  },
+  carousel: {
+    name: "Carousel",
+    description: "A motion component for cycling through elements.",
+    installation: "carousel",
+    preview: CarouselDemo,
+    previewCode: `import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
+
+export function CarouselDemo() {
+  return (
+    <Carousel className="w-full max-w-xs mx-12">
+      <CarouselContent>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <CarouselItem key={index}>
+            <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center p-4">
+                  <span className="text-4xl font-semibold">{index + 1}</span>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+  );
+}`,
+    usage: [
+      `import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";`,
+      `<Carousel>
+  <CarouselContent>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+  </CarouselContent>
+  <CarouselPrevious />
+  <CarouselNext />
+</Carousel>`,
+    ],
+  },
   card: {
     name: "Card",
     description:
@@ -799,16 +882,13 @@ export function DropdownMenuDemo() {
 import { Button } from "../ui/button";
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "../ui/hover-card";
 
-export const HoverCardDemo = () => {
+export function HoverCardDemo() {
   return (
     <HoverCard>
-      <HoverCardTrigger>
-        <Button variant="link" className="text-white">
-          @nextjs
-        </Button>
+      <HoverCardTrigger asChild>
+        <Button variant="link">@nextjs</Button>
       </HoverCardTrigger>
       <HoverCardContent className="w-80">
-        <div className="flex justify-between gap-4">
           <Avatar name="RN" img="https://i.redd.it/unicurnujpqc1.jpeg"></Avatar>
           <div className="space-y-1">
             <h4 className="text-sm font-semibold">@nextjs</h4>

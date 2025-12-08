@@ -13,7 +13,6 @@ export const components = [
     { title: "Calendar", path: "/calendar" },
     { title: "Card", path: "/card" },
     { title: "Carousel", path: "/carousel" },
-    { title: "Chart", path: "/chart" },
     { title: "Collapsible", path: "/collapsible" },
     { title: "Combobox", path: "/combobox" },
     { title: "Command", path: "/command" },

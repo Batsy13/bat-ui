@@ -34,6 +34,7 @@ import { PopoverDemo } from "@/components/demos/popover-demo";
 import { TooltipDemo } from "@/components/demos/tooltip-demo";
 import { CalendarDemo } from "@/components/demos/calendar-demo";
 import { CarouselDemo } from "@/components/demos/carousel-demo";
+import { ComboboxDemo } from "@/components/demos/combobox-demo";
 import { CardDemo } from "@/components/demos/card-demo";
 import { HoverCardDemo } from "@/components/demos/hover-card-demo";
 import { SkeletonDemo, SkeletonExample } from "@/components/demos/skeleton";
@@ -511,6 +512,62 @@ export function CarouselDemo() {
   <CarouselPrevious />
   <CarouselNext />
 </Carousel>`,
+    ],
+  },
+  combobox: {
+    name: "Combobox",
+    description: "Autocomplete input and command palette with a list of suggestions.",
+    installation: "combobox",
+    preview: ComboboxDemo,
+    previewCode: `import * as React from "react";
+import { Combobox } from "@/components/ui/combobox";
+
+const frameworks = [
+  {
+    value: "next.js",
+    label: "Next.js",
+  },
+  {
+    value: "sveltekit",
+    label: "SvelteKit",
+  },
+  {
+    value: "nuxt.js",
+    label: "Nuxt.js",
+  },
+  {
+    value: "remix",
+    label: "Remix",
+  },
+  {
+    value: "astro",
+    label: "Astro",
+  },
+];
+
+export function ComboboxDemo() {
+  const [value, setValue] = React.useState("");
+
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <Combobox
+        options={frameworks}
+        value={value}
+        onChange={setValue}
+        placeholder="Select framework..."
+        emptyText="No framework found."
+      />
+    </div>
+  );
+}`,
+    usage: [
+      `import { Combobox } from "@/components/ui/combobox";`,
+      `<Combobox
+  options={options}
+  value={value}
+  onChange={setValue}
+  placeholder="Select item..."
+/>`,
     ],
   },
   card: {

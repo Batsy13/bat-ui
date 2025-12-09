@@ -36,6 +36,7 @@ import { CalendarDemo } from "@/components/demos/calendar-demo";
 import { CarouselDemo } from "@/components/demos/carousel-demo";
 import { ComboboxDemo } from "@/components/demos/combobox-demo";
 import { ContextMenuDemo } from "@/components/demos/context-menu-demo";
+import { InputOTPDemo } from "@/components/demos/input-otp-demo";
 import { CardDemo } from "@/components/demos/card-demo";
 import { HoverCardDemo } from "@/components/demos/hover-card-demo";
 import { SkeletonDemo, SkeletonExample } from "@/components/demos/skeleton";
@@ -633,6 +634,61 @@ export function ContextMenuDemo() {
     <ContextMenuItem>Billing</ContextMenuItem>
   </ContextMenuContent>
 </ContextMenu>`,
+    ],
+  },
+  "input-otp": {
+    name: "Input OTP",
+    description: "Accessible one-time password component with copy paste support.",
+    installation: "input-otp",
+    preview: InputOTPDemo,
+    previewCode: `import * as React from "react";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
+
+export function InputOTPDemo() {
+  const [value, setValue] = React.useState("");
+
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <InputOTP
+        maxLength={6}
+        value={value}
+        onChange={(val) => setValue(val)}
+      >
+        <InputOTPGroup>
+          <InputOTPSlot index={0} />
+          <InputOTPSlot index={1} />
+          <InputOTPSlot index={2} />
+        </InputOTPGroup>
+        <InputOTPSeparator />
+        <InputOTPGroup>
+          <InputOTPSlot index={3} />
+          <InputOTPSlot index={4} />
+          <InputOTPSlot index={5} />
+        </InputOTPGroup>
+      </InputOTP>
+    </div>
+  );
+}`,
+    usage: [
+      `import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";`,
+      `<InputOTP maxLength={6}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+  </InputOTPGroup>
+  <InputOTPSeparator />
+  <InputOTPGroup>
+    <InputOTPSlot index={3} />
+    <InputOTPSlot index={4} />
+    <InputOTPSlot index={5} />
+  </InputOTPGroup>
+</InputOTP>`,
     ],
   },
   card: {

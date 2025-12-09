@@ -37,6 +37,7 @@ import { CarouselDemo } from "@/components/demos/carousel-demo";
 import { ComboboxDemo } from "@/components/demos/combobox-demo";
 import { ContextMenuDemo } from "@/components/demos/context-menu-demo";
 import { InputOTPDemo } from "@/components/demos/input-otp-demo";
+import { DatePickerDemo, DatePickerWithRange } from "@/components/demos/date-picker-demo";
 import { CardDemo } from "@/components/demos/card-demo";
 import { HoverCardDemo } from "@/components/demos/hover-card-demo";
 import { SkeletonDemo, SkeletonExample } from "@/components/demos/skeleton";
@@ -691,6 +692,171 @@ export function InputOTPDemo() {
 </InputOTP>`,
     ],
   },
+  "date-picker": {
+    name: "Date Picker",
+    description: "A date picker component with range and presets.",
+    installation: "date-picker",
+    preview: DatePickerDemo,
+    previewCode: `import * as React from "react";
+import { DatePicker } from "@/components/ui/date-picker";
+
+export function DatePickerDemo() {
+  const [date, setDate] = React.useState<Date | undefined>();
+
+  return (
+    <div className="flex flex-col gap-4 items-center">
+        <DatePicker
+            date={date}
+            setDate={setDate} 
+            className="w-[280px]" 
+        />
+         <div className="text-sm text-zinc-500">
+            Selected: {date ? date.toDateString() : "None"}
+        </div>
+    </div>
+  );
+}`,
+    usage: [
+      `import { DatePicker } from "@/components/ui/date-picker";`,
+      `<DatePicker date={date} setDate={setDate} />`,
+    ],
+    examples: [
+      {
+        title: "Date Range Picker",
+        preview: DatePickerWithRange,
+        code: `import * as React from "react";
+import { addDays, format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
+import { DateRange } from "@/components/ui/calendar";
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
+export function DatePickerWithRange({
+  className,
+}: React.HTMLAttributes<HTMLDivElement>) {
+  const [date, setDate] = React.useState<DateRange | undefined>({
+    from: new Date(2024, 4, 29),
+    to: new Date(2025, 11, 5),
+  });
+
+  return (
+    <div className={cn("grid gap-2", className)}>
+      <Popover>
+        <PopoverTrigger>
+          <Button
+            id="date"
+            variant={"outline"}
+            className={cn(
+              "w-[300px] justify-start text-left font-normal",
+              !date && "text-muted-foreground"
+            )}
+          >
+            <CalendarIcon className="mr-2 h-4 w-4" />
+            {date?.from ? (
+              date.to ? (
+                <>
+                  {format(date.from, "LLL dd, y")} -{" "}
+                  {format(date.to, "LLL dd, y")}
+                </>
+              ) : (
+                format(date.from, "LLL dd, y")
+              )
+            ) : (
+              <span>Pick a date</span>
+            )}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0">
+          <Calendar
+            mode="range"
+            value={date}
+            onChange={setDate}
+          />
+        </PopoverContent>
+      </Popover>
+    </div>
+  );
+}`,
+      },
+    ],
+  },
+  "date-range-picker": {
+    name: "Date Range Picker",
+    description: "A date range picker component.",
+    installation: "date-range-picker",
+    preview: DatePickerWithRange,
+    previewCode: `import * as React from "react";
+import { addDays, format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
+import { DateRange } from "@/components/ui/calendar";
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
+export function DatePickerWithRange({
+  className,
+}: React.HTMLAttributes<HTMLDivElement>) {
+  const [date, setDate] = React.useState<DateRange | undefined>({
+    from: new Date(2022, 0, 20),
+    to: addDays(new Date(2022, 0, 20), 20),
+  });
+
+  return (
+    <div className={cn("grid gap-2", className)}>
+      <Popover>
+        <PopoverTrigger>
+          <Button
+            id="date"
+            variant={"outline"}
+            className={cn(
+              "w-[300px] justify-start text-left font-normal",
+              !date && "text-muted-foreground"
+            )}
+          >
+            <CalendarIcon className="mr-2 h-4 w-4" />
+            {date?.from ? (
+              date.to ? (
+                <>
+                  {format(date.from, "LLL dd, y")} -{" "}
+                  {format(date.to, "LLL dd, y")}
+                </>
+              ) : (
+                format(date.from, "LLL dd, y")
+              )
+            ) : (
+              <span>Pick a date</span>
+            )}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0" align="start">
+          <Calendar
+            mode="range"
+            value={date}
+            onChange={setDate}
+          />
+        </PopoverContent>
+      </Popover>
+    </div>
+  );
+}`,
+    usage: [
+      `import { DatePickerWithRange } from "@/components/ui/date-range-picker";`,
+      `<DatePickerWithRange />`,
+    ],
+  },
   card: {
     name: "Card",
     description:
@@ -1063,7 +1229,7 @@ import { HoverCard, HoverCardTrigger, HoverCardContent } from "../ui/hover-card"
 export function HoverCardDemo() {
   return (
     <HoverCard>
-      <HoverCardTrigger asChild>
+      <HoverCardTrigger>
         <Button variant="link">@nextjs</Button>
       </HoverCardTrigger>
       <HoverCardContent className="w-80">

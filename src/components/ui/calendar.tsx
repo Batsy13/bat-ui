@@ -11,18 +11,37 @@ import {
   startOfMonth,
   startOfWeek,
   subMonths,
+  isBefore,
+  isAfter,
 } from "date-fns";
 import { cn } from "../../lib/utils";
 import { Button } from "./button";
 
-export type CalendarProps = {
-  value?: Date;
-  onChange?: (date: Date) => void;
-  className?: string;
+export type DateRange = {
+  from: Date | undefined;
+  to?: Date | undefined;
 };
 
-function Calendar({ value, onChange, className }: CalendarProps) {
-  const [currentMonth, setCurrentMonth] = useState(value || new Date());
+export type CalendarProps = {
+  className?: string;
+} & (
+    | {
+      mode?: "single";
+      value?: Date;
+      onChange?: (date: Date | undefined) => void;
+    }
+    | {
+      mode: "range";
+      value?: DateRange;
+      onChange?: (range: DateRange | undefined) => void;
+    }
+  );
+
+function Calendar({ className, mode = "single", ...props }: CalendarProps) {
+  const { value, onChange } = props as any;
+  const [currentMonth, setCurrentMonth] = useState(
+    (mode === "single" ? value : value?.from) || new Date()
+  );
 
   const days = useMemo(() => {
     const start = startOfWeek(startOfMonth(currentMonth));
@@ -34,11 +53,27 @@ function Calendar({ value, onChange, className }: CalendarProps) {
   const nextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
 
   const handleDateClick = (date: Date) => {
-    onChange?.(date);
+    if (mode === "single") {
+      onChange?.(date);
+    } else {
+      const range = value as DateRange | undefined;
+      if (!range?.from || (range.from && range.to)) {
+        onChange?.({ from: date, to: undefined });
+      } else if (isBefore(date, range.from)) {
+        onChange?.({ from: date, to: range.from });
+      } else {
+        onChange?.({ from: range.from, to: date });
+      }
+    }
   };
 
   return (
-    <div className={cn("p-3 bg-black border rounded-md border-zinc-800 w-fit", className)}>
+    <div
+      className={cn(
+        "p-3 bg-black border rounded-md border-zinc-800 w-fit",
+        className
+      )}
+    >
       <div className="flex items-center justify-between mb-4">
         <span className="text-sm font-medium text-white">
           {format(currentMonth, "MMMM yyyy")}
@@ -69,19 +104,46 @@ function Calendar({ value, onChange, className }: CalendarProps) {
       </div>
       <div className="grid grid-cols-7 gap-1">
         {days.map((day) => {
-          const isSelected = value ? isSameDay(day, value) : false;
+          let isSelected = false;
+          let isRangeStart = false;
+          let isRangeEnd = false;
+          let isRangeMiddle = false;
+
+          if (mode === "single") {
+            isSelected = value ? isSameDay(day, value) : false;
+          } else {
+            const range = value as DateRange | undefined;
+            if (range?.from) {
+              isRangeStart = isSameDay(day, range.from);
+              if (range.to) {
+                isRangeEnd = isSameDay(day, range.to);
+                isRangeMiddle =
+                  isAfter(day, range.from) && isBefore(day, range.to);
+              }
+            }
+            isSelected = isRangeStart || isRangeEnd;
+          }
+
           const isCurrentMonth = isSameMonth(day, currentMonth);
+          const range = value as DateRange | undefined;
 
           return (
             <button
               key={day.toString()}
               onClick={() => handleDateClick(day)}
               className={cn(
-                "h-8 w-8 p-0 text-sm font-normal rounded-md flex items-center justify-center transition-colors",
+                "h-8 w-8 p-0 text-sm font-normal flex items-center justify-center transition-colors rounded-md",
                 !isCurrentMonth && "text-zinc-600 opacity-50",
-                isCurrentMonth && "text-zinc-300 hover:bg-zinc-800 hover:text-white",
+                isCurrentMonth &&
+                !isSelected &&
+                !isRangeMiddle &&
+                "text-zinc-300 hover:bg-zinc-800 hover:text-white",
                 isSelected &&
-                "bg-white text-black hover:bg-white hover:text-black font-medium opacity-100"
+                "bg-white text-black hover:bg-white hover:text-black font-medium opacity-100 z-10",
+                isRangeMiddle &&
+                "bg-zinc-800 text-zinc-300 hover:bg-zinc-700 rounded-none",
+                isRangeStart && range?.to && "rounded-r-none",
+                isRangeEnd && range?.from && "rounded-l-none"
               )}
             >
               {format(day, "d")}

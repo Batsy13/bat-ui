@@ -41,6 +41,7 @@ import { DatePickerDemo, DatePickerWithRange } from "@/components/demos/date-pic
 import { DrawerDemo } from "@/components/demos/drawer-demo";
 import { SwitchDemo } from "@/components/demos/switch-demo";
 import { TabsDemo } from "@/components/demos/tabs-demo";
+import { CodeComparisonDemo } from "@/components/demos/code-comparison-demo";
 import { CardDemo } from "@/components/demos/card-demo";
 import { HoverCardDemo } from "@/components/demos/hover-card-demo";
 import { SkeletonDemo, SkeletonExample } from "@/components/demos/skeleton";
@@ -1041,6 +1042,55 @@ export function TabsDemo() {
   <TabsContent value="account">Make changes to your account here.</TabsContent>
   <TabsContent value="password">Change your password here.</TabsContent>
 </Tabs>`,
+    ],
+  },
+  "code-comparison": {
+    name: "Code Comparison",
+    description:
+      "A component that allows users to compare two blocks of code with a slider.",
+    installation: "code-comparison",
+    preview: CodeComparisonDemo,
+    previewCode: `import { CodeComparison } from "@/components/ui/code-comparison";
+
+const beforeCode = \`function Button({ children, ...props }) {
+  return (
+    <button {...props}>
+      {children}
+    </button>
+  )
+}\`;
+
+const afterCode = \`function Button({ children, variant = "primary", ...props }) {
+  const styles = {
+    primary: "bg-blue-500 text-white",
+    secondary: "bg-gray-200 text-gray-900"
+  };
+
+  return (
+    <button 
+      className={\\\`rounded px-4 py-2 \\\${styles[variant]}\\\`} 
+      {...props}
+    >
+      {children}
+    </button>
+  )
+}\`;
+
+export function CodeComparisonDemo() {
+  return (
+    <div className="w-full max-w-2xl">
+      <CodeComparison
+        beforeCode={beforeCode}
+        afterCode={afterCode}
+        language="tsx"
+        filename="button.tsx"
+      />
+    </div>
+  );
+}`,
+    usage: [
+      `import { CodeComparison } from "@/components/ui/code-comparison";`,
+      `<CodeComparison beforeCode={before} afterCode={after} language="tsx" filename="example.tsx" />`,
     ],
   },
   card: {

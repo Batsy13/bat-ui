@@ -44,6 +44,7 @@ import { TabsDemo } from "@/components/demos/tabs-demo";
 import { CodeComparisonDemo } from "@/components/demos/code-comparison-demo";
 import { SliderDemo } from "@/components/demos/slider-demo";
 import { SelectDemo } from "@/components/demos/select-demo";
+import { SeparatorDemo } from "@/components/demos/separator-demo";
 import { CardDemo } from "@/components/demos/card-demo";
 import { HoverCardDemo } from "@/components/demos/hover-card-demo";
 import { SkeletonDemo, SkeletonExample } from "@/components/demos/skeleton";
@@ -1180,6 +1181,38 @@ export function SelectDemo() {
     <SelectItem value="system">System</SelectItem>
   </SelectContent>
 </Select>`,
+    ],
+  },
+  separator: {
+    name: "Separator",
+    description: "Visually or semantically separates content.",
+    installation: "separator",
+    preview: SeparatorDemo,
+    previewCode: `import { Separator } from "@/components/ui/separator";
+
+export function SeparatorDemo() {
+  return (
+    <div>
+      <div className="space-y-1">
+        <h4 className="text-sm font-medium leading-none text-white">Bat UI</h4>
+        <p className="text-sm text-muted-foreground text-zinc-400">
+          A collection of native UI components.
+        </p>
+      </div>
+      <Separator className="my-4" />
+      <div className="flex h-5 items-center space-x-4 text-sm text-white">
+        <div>Components</div>
+        <Separator orientation="vertical" />
+        <div>Themes</div>
+        <Separator orientation="vertical" />
+        <div>GitHub</div>
+      </div>
+    </div>
+  );
+}`,
+    usage: [
+      `import { Separator } from "@/components/ui/separator"`,
+      `<Separator />`,
     ],
   },
   card: {

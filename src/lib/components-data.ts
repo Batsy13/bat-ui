@@ -40,6 +40,7 @@ import { InputOTPDemo } from "@/components/demos/input-otp-demo";
 import { DatePickerDemo, DatePickerWithRange } from "@/components/demos/date-picker-demo";
 import { DrawerDemo } from "@/components/demos/drawer-demo";
 import { SwitchDemo } from "@/components/demos/switch-demo";
+import { TabsDemo } from "@/components/demos/tabs-demo";
 import { CardDemo } from "@/components/demos/card-demo";
 import { HoverCardDemo } from "@/components/demos/hover-card-demo";
 import { SkeletonDemo, SkeletonExample } from "@/components/demos/skeleton";
@@ -948,6 +949,98 @@ export function SwitchDemo() {
     usage: [
       `import { Switch } from "@/components/ui/switch";`,
       `<Switch checked={checked} onCheckedChange={setChecked} />`,
+    ],
+  },
+  tabs: {
+    name: "Tabs",
+    description:
+      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+    installation: "tabs",
+    preview: TabsDemo,
+    previewCode: `import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
+
+export function TabsDemo() {
+  return (
+    <Tabs defaultValue="account" className="w-[400px]">
+      <TabsList className="grid w-full grid-cols-2">
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">
+        <Card>
+          <CardHeader>
+            <CardTitle>Account</CardTitle>
+            <CardDescription>
+              Make changes to your account here. Click save when you're done.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <div className="space-y-1">
+              <label htmlFor="name">Name</label>
+              <Input id="name" defaultValue="Batsy13" />
+            </div>
+            <div className="space-y-1">
+              <label htmlFor="username">Username</label>
+              <Input id="username" defaultValue="@batsy13" />
+            </div>
+          </CardContent>
+          <CardFooter>
+            <Button>Save changes</Button>
+          </CardFooter>
+        </Card>
+      </TabsContent>
+      <TabsContent value="password">
+        <Card>
+          <CardHeader>
+            <CardTitle>Password</CardTitle>
+            <CardDescription>
+              Change your password here. After saving, you'll be logged out.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <div className="space-y-1">
+              <label htmlFor="current">Current password</label>
+              <Input id="current" type="password" />
+            </div>
+            <div className="space-y-1">
+              <label htmlFor="new">New password</label>
+              <Input id="new" type="password" />
+            </div>
+          </CardContent>
+          <CardFooter>
+            <Button>Save password</Button>
+          </CardFooter>
+        </Card>
+      </TabsContent>
+    </Tabs>
+  );
+}`,
+    usage: [
+      `import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";`,
+      `<Tabs defaultValue="account" className="w-[400px]">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Make changes to your account here.</TabsContent>
+  <TabsContent value="password">Change your password here.</TabsContent>
+</Tabs>`,
     ],
   },
   card: {

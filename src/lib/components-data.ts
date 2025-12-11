@@ -43,6 +43,7 @@ import { SwitchDemo } from "@/components/demos/switch-demo";
 import { TabsDemo } from "@/components/demos/tabs-demo";
 import { CodeComparisonDemo } from "@/components/demos/code-comparison-demo";
 import { SliderDemo } from "@/components/demos/slider-demo";
+import { SelectDemo } from "@/components/demos/select-demo";
 import { CardDemo } from "@/components/demos/card-demo";
 import { HoverCardDemo } from "@/components/demos/hover-card-demo";
 import { SkeletonDemo, SkeletonExample } from "@/components/demos/skeleton";
@@ -1130,6 +1131,55 @@ export function SliderDemo({ className, ...props }: SliderProps) {
     usage: [
       `import { Slider } from "@/components/ui/slider";`,
       `<Slider defaultValue={[33]} max={100} step={1} />`,
+    ],
+  },
+  select: {
+    name: "Select",
+    description:
+      "Displays a list of options for the user to pick from—triggered by a button.",
+    installation: "select",
+    preview: SelectDemo,
+    previewCode: `import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+export function SelectDemo() {
+  return (
+    <Select>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Select a fruit" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel>Fruits</SelectLabel>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
+          <SelectItem value="blueberry">Blueberry</SelectItem>
+          <SelectItem value="grapes">Grapes</SelectItem>
+          <SelectItem value="pineapple">Pineapple</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+  );
+}`,
+    usage: [
+      `import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"`,
+      `<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Theme" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="light">Light</SelectItem>
+    <SelectItem value="dark">Dark</SelectItem>
+    <SelectItem value="system">System</SelectItem>
+  </SelectContent>
+</Select>`,
     ],
   },
   card: {

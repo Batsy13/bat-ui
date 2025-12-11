@@ -39,6 +39,7 @@ import { ContextMenuDemo } from "@/components/demos/context-menu-demo";
 import { InputOTPDemo } from "@/components/demos/input-otp-demo";
 import { DatePickerDemo, DatePickerWithRange } from "@/components/demos/date-picker-demo";
 import { DrawerDemo } from "@/components/demos/drawer-demo";
+import { SwitchDemo } from "@/components/demos/switch-demo";
 import { CardDemo } from "@/components/demos/card-demo";
 import { HoverCardDemo } from "@/components/demos/hover-card-demo";
 import { SkeletonDemo, SkeletonExample } from "@/components/demos/skeleton";
@@ -919,6 +920,34 @@ export function DrawerDemo() {
     </DrawerFooter>
   </DrawerContent>
 </Drawer>`,
+    ],
+  },
+  switch: {
+    name: "Switch",
+    description: "A control that allows the user to toggle between checked and not checked.",
+    installation: "switch",
+    preview: SwitchDemo,
+    previewCode: `import { Switch } from "@/components/ui/switch";
+import { useState } from "react";
+
+export function SwitchDemo() {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <div className="flex items-center space-x-2">
+      <Switch id="airplane-mode" checked={checked} onCheckedChange={setChecked} />
+      <label
+        htmlFor="airplane-mode"
+        className="text-sm font-medium leading-none text-white peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        Airplane Mode
+      </label>
+    </div>
+  );
+}`,
+    usage: [
+      `import { Switch } from "@/components/ui/switch";`,
+      `<Switch checked={checked} onCheckedChange={setChecked} />`,
     ],
   },
   card: {

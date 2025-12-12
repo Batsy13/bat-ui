@@ -45,6 +45,7 @@ import { CodeComparisonDemo } from "@/components/demos/code-comparison-demo";
 import { SliderDemo } from "@/components/demos/slider-demo";
 import { SelectDemo } from "@/components/demos/select-demo";
 import { SeparatorDemo } from "@/components/demos/separator-demo";
+import { ToggleDemo } from "@/components/demos/toggle-demo";
 import { CardDemo } from "@/components/demos/card-demo";
 import { HoverCardDemo } from "@/components/demos/hover-card-demo";
 import { SkeletonDemo, SkeletonExample } from "@/components/demos/skeleton";
@@ -1045,6 +1046,27 @@ export function TabsDemo() {
   <TabsContent value="account">Make changes to your account here.</TabsContent>
   <TabsContent value="password">Change your password here.</TabsContent>
 </Tabs>`,
+    ],
+  },
+  toggle: {
+    name: "Toggle",
+    description: "A two-state button that can be either on or off.",
+    installation: "toggle",
+    preview: ToggleDemo,
+    previewCode: `import { Bold } from "lucide-react"
+
+import { Toggle } from "@/components/ui/toggle"
+
+export function ToggleDemo() {
+  return (
+    <Toggle aria-label="Toggle bold">
+      <Bold className="h-4 w-4" />
+    </Toggle>
+  )
+}`,
+    usage: [
+      `import { Toggle } from "@/components/ui/toggle"`,
+      `<Toggle>Toggle</Toggle>`,
     ],
   },
   "code-comparison": {

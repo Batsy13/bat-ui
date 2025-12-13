@@ -42,6 +42,7 @@ import { DrawerDemo } from "@/components/demos/drawer-demo";
 import { SwitchDemo } from "@/components/demos/switch-demo";
 import { TabsDemo } from "@/components/demos/tabs-demo";
 import { CodeComparisonDemo } from "@/components/demos/code-comparison-demo";
+import { FileTreeDemo } from "@/components/demos/file-tree-demo";
 import { MenubarDemo } from "@/components/demos/menubar-demo";
 import { SliderDemo } from "@/components/demos/slider-demo";
 import { SelectDemo } from "@/components/demos/select-demo";
@@ -644,6 +645,51 @@ export function ContextMenuDemo() {
     <ContextMenuItem>Billing</ContextMenuItem>
   </ContextMenuContent>
 </ContextMenu>`,
+    ],
+  },
+  "file-tree": {
+    name: "File Tree",
+    description:
+      "A hierarchical list of files and folders to visualize project structure.",
+    installation: "file-tree",
+    preview: FileTreeDemo,
+    previewCode: `import { File, FileTree, Folder } from "@/components/ui/file-tree";
+
+export function FileTreeDemo() {
+  return (
+    <div className="w-full max-w-sm rounded-md border border-zinc-800 bg-zinc-950 p-4">
+      <FileTree initialExpanded={["src", "components"]}>
+        <Folder value="src" name="src">
+          <Folder value="components" name="components">
+            <Folder value="ui" name="ui">
+              <File value="button.tsx" name="button.tsx" />
+              <File value="input.tsx" name="input.tsx" />
+              <File value="slider.tsx" name="slider.tsx" />
+            </Folder>
+            <File value="header.tsx" name="header.tsx" />
+            <File value="footer.tsx" name="footer.tsx" />
+          </Folder>
+          <Folder value="lib" name="lib">
+            <File value="utils.ts" name="utils.ts" />
+            <File value="components-data.ts" name="components-data.ts" />
+          </Folder>
+          <File value="main.tsx" name="main.tsx" />
+          <File value="App.tsx" name="App.tsx" />
+        </Folder>
+        <File value="package.json" name="package.json" />
+        <File value="README.md" name="README.md" />
+        <File value="tsconfig.json" name="tsconfig.json" />
+      </FileTree>
+    </div>
+  );
+}`,
+    usage: [
+      `import { FileTree, Folder, File } from "@/components/ui/file-tree"`,
+      `<FileTree>
+  <Folder value="src" name="src">
+    <File value="main.tsx" name="main.tsx" />
+  </Folder>
+</FileTree>`,
     ],
   },
   menubar: {

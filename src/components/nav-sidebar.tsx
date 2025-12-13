@@ -40,7 +40,6 @@ export const components = [
     { title: "Tabs", path: "/tabs" },
     { title: "Textarea", path: "/textarea" },
     { title: "Toggle", path: "/toggle" },
-    { title: "Toggle Group", path: "/toggle-group" },
     { title: "Tooltip", path: "/tooltip" },
     { title: "Terminal", path: "/terminal" },
     { title: "Hero Video Dialog", path: "/hero-video-dialog" },

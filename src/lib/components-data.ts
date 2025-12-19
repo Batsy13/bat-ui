@@ -45,6 +45,7 @@ import { CodeComparisonDemo } from "@/components/demos/code-comparison-demo";
 import { FileTreeDemo } from "@/components/demos/file-tree-demo";
 import { MenubarDemo } from "@/components/demos/menubar-demo";
 import { NavigationMenuDemo } from "@/components/demos/navigation-menu-demo";
+import { PaginationDemo } from "@/components/demos/pagination-demo";
 import { SidebarDemo } from "@/components/demos/sidebar-demo";
 import { SliderDemo } from "@/components/demos/slider-demo";
 import { SelectDemo } from "@/components/demos/select-demo";
@@ -1082,6 +1083,69 @@ export function SidebarDemo() {
   </main>
 </SidebarProvider>`
     ]
+  },
+  pagination: {
+    name: "Pagination",
+    description: "Pagination with page navigation, next and previous links.",
+    installation: "pagination",
+    preview: PaginationDemo,
+    previewCode: `import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
+
+export function PaginationDemo() {
+  return (
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious href="#" />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink href="#">1</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink href="#" isActive>
+            2
+          </PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink href="#">3</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationEllipsis />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationNext href="#" />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  )
+}`,
+    usage: [
+      `import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination"`,
+      `<Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious href="#" />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">1</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href="#" />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>`,
+    ],
   },
   "input-otp": {
     name: "Input OTP",

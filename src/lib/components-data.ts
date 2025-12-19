@@ -46,6 +46,7 @@ import { FileTreeDemo } from "@/components/demos/file-tree-demo";
 import { MenubarDemo } from "@/components/demos/menubar-demo";
 import { NavigationMenuDemo } from "@/components/demos/navigation-menu-demo";
 import { PaginationDemo } from "@/components/demos/pagination-demo";
+import { ScrollProgressDemo } from "@/components/demos/scroll-progress-demo";
 import { SidebarDemo } from "@/components/demos/sidebar-demo";
 import { SliderDemo } from "@/components/demos/slider-demo";
 import { SelectDemo } from "@/components/demos/select-demo";
@@ -1656,6 +1657,49 @@ export function SliderDemo({ className, ...props }: SliderProps) {
     usage: [
       `import { Slider } from "@/components/ui/slider";`,
       `<Slider defaultValue={[33]} max={100} step={1} />`,
+    ],
+  },
+  "scroll-progress": {
+    name: "Scroll Progress",
+    description: "A progress bar that tracks the user's scroll position.",
+    installation: "scroll-progress",
+    preview: ScrollProgressDemo,
+    previewCode: `import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { useRef } from "react";
+
+export function ScrollProgressDemo() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <div className="relative h-[300px] w-full overflow-hidden rounded-md border border-zinc-800 bg-zinc-950">
+        <ScrollProgress className="absolute" containerRef={containerRef} />
+        
+        <div 
+            ref={containerRef} 
+            className="h-full w-full overflow-y-auto p-6 text-sm text-zinc-400"
+        >
+            <h4 className="mb-4 text-lg font-medium text-white">Scroll down to see progress</h4>
+            <div className="space-y-4">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                {Array.from({ length: 20 }).map((_, i) => (
+                    <p key={i}>
+                        Paragraph {i + 1}: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                ))}
+                <p>
+                   You have reached the end of the content. The scroll progress bar should be full.
+                </p>
+            </div>
+        </div>
+    </div>
+  );
+}`,
+    usage: [
+      `import { ScrollProgress } from "@/components/ui/scroll-progress"`,
+      `<ScrollProgress className="top-0" />`,
     ],
   },
   select: {

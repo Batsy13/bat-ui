@@ -34,7 +34,6 @@ export const components = [
     { title: "Sidebar", path: "/sidebar" },
     { title: "Skeleton", path: "/skeleton" },
     { title: "Slider", path: "/slider" },
-    { title: "Sonner", path: "/sonner" },
     { title: "Switch", path: "/switch" },
     { title: "Table", path: "/table" },
     { title: "Tabs", path: "/tabs" },

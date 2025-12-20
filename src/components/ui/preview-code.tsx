@@ -39,7 +39,7 @@ const PreviewCode = ({
             </div>
 
             {activeTab == "preview" && (
-                <div className="flex items-center justify-center w-full p-10 h-[450px] border border-border rounded-xl no-scrollbar ">
+                <div className="flex items-center justify-center w-full p-10 h-[450px] border border-border rounded-xl no-scrollbar overflow-hidden">
                     {PreviewComponent ? (
                         PreviewComponent
                     ) : (

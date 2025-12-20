@@ -47,6 +47,7 @@ import { MenubarDemo } from "@/components/demos/menubar-demo";
 import { NavigationMenuDemo } from "@/components/demos/navigation-menu-demo";
 import { PaginationDemo } from "@/components/demos/pagination-demo";
 import { ScrollProgressDemo } from "@/components/demos/scroll-progress-demo";
+import { TableDemo } from "@/components/demos/table-demo";
 import { SidebarDemo } from "@/components/demos/sidebar-demo";
 import { SliderDemo } from "@/components/demos/slider-demo";
 import { SelectDemo } from "@/components/demos/select-demo";
@@ -1457,6 +1458,97 @@ export function SwitchDemo() {
     usage: [
       `import { Switch } from "@/components/ui/switch";`,
       `<Switch checked={checked} onCheckedChange={setChecked} />`,
+    ],
+  },
+  table: {
+    name: "Table",
+    description: "A responsive table component.",
+    installation: "table",
+    preview: TableDemo,
+    previewCode: `import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
+const characters = [
+  {
+    codeName: "Joker",
+    realName: "Ren Amamiya",
+    arcana: "Fool",
+    persona: "Arsène",
+  },
+  {
+    codeName: "Skull",
+    realName: "Ryuji Sakamoto",
+    arcana: "Chariot",
+    persona: "Captain Kidd",
+  },
+  {
+    codeName: "Mona",
+    realName: "Morgana",
+    arcana: "Magician",
+    persona: "Zorro",
+  },
+]
+
+export function TableDemo() {
+  return (
+    <Table>
+      <TableCaption>The Phantom Thieves of Hearts.</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead className="w-[100px]">Code Name</TableHead>
+          <TableHead>Real Name</TableHead>
+          <TableHead>Arcana</TableHead>
+          <TableHead className="text-right">Persona</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {characters.map((character) => (
+          <TableRow key={character.codeName}>
+            <TableCell className="font-medium">{character.codeName}</TableCell>
+            <TableCell>{character.realName}</TableCell>
+            <TableCell>{character.arcana}</TableCell>
+            <TableCell className="text-right">{character.persona}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+      <TableFooter>
+        <TableRow>
+          <TableCell colSpan={3}>Total Members</TableCell>
+          <TableCell className="text-right">{characters.length}</TableCell>
+        </TableRow>
+      </TableFooter>
+    </Table>
+  )
+}`,
+    usage: [
+      `import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"`,
+      `<Table>
+  <TableCaption>The Phantom Thieves of Hearts.</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead className="w-[100px]">Code Name</TableHead>
+      <TableHead>Real Name</TableHead>
+      <TableHead>Arcana</TableHead>
+      <TableHead className="text-right">Persona</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell className="font-medium">Joker</TableCell>
+      <TableCell>Ren Amamiya</TableCell>
+      <TableCell>Fool</TableCell>
+      <TableCell className="text-right">Arsène</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`,
     ],
   },
   tabs: {

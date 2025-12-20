@@ -53,9 +53,9 @@ const DialogTrigger = ({
 }) => {
   const { open } = useDialog();
   return (
-    <Button onClick={open} className={cn("w-fit", className)}>
+    <div onClick={open} className={cn("w-fit", className)}>
       {children}
-    </Button>
+    </div>
   );
 };
 

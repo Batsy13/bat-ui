@@ -12,7 +12,7 @@ import { Input } from "../ui/input";
 export function DialogDemo() {
   return (
     <Dialog>
-      <DialogTrigger>Open Dialog</DialogTrigger>
+      <DialogTrigger className="px-4 py-2 bg-primary rounded-xl cursor-pointer hover:bg-primary/80">Open Dialog</DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader
           title="Edit profile"

@@ -43,6 +43,7 @@ import { SwitchDemo } from "@/components/demos/switch-demo";
 import { TabsDemo } from "@/components/demos/tabs-demo";
 import { CodeComparisonDemo } from "@/components/demos/code-comparison-demo";
 import { FileTreeDemo } from "@/components/demos/file-tree-demo";
+import { HeroVideoDialogDemo } from "@/components/demos/hero-video-dialog-demo";
 import { MenubarDemo } from "@/components/demos/menubar-demo";
 import { NavigationMenuDemo } from "@/components/demos/navigation-menu-demo";
 import { PaginationDemo } from "@/components/demos/pagination-demo";
@@ -695,6 +696,31 @@ export function FileTreeDemo() {
     <File value="main.tsx" name="main.tsx" />
   </Folder>
 </FileTree>`,
+    ],
+  },
+  "hero-video-dialog": {
+    name: "Hero Video Dialog",
+    description: "A component that opens a video in a modal dialog.",
+    installation: "hero-video-dialog",
+    preview: HeroVideoDialogDemo,
+    previewCode: `import { HeroVideoDialog } from "@/components/ui/hero-video-dialog";
+    
+    export function HeroVideoDialogDemo() {
+      return (
+        <div className="relative w-full max-w-2xl mx-auto space-y-8">
+          <div className="space-y-4">
+            <HeroVideoDialog
+              videoSrc="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+              thumbnailSrc="https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/store/software/switch/70010000043147/684bd8b00abcbf6dd122727a27c01a337f667bef825f4f4662efad9854b72fd4"
+              thumbnailAlt="Music Video"
+            />
+          </div>
+        </div>
+      );
+    }`,
+    usage: [
+      `import { HeroVideoDialog } from "@/components/ui/hero-video-dialog"`,
+      `<HeroVideoDialog videoSrc="..." thumbnailSrc="..." />`,
     ],
   },
   menubar: {

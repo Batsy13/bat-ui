@@ -1,5 +1,38 @@
 @import "tailwindcss";
 
+h1 {
+    font-size: 2.25rem;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+@theme {
+    --color-primary: var(--primary);
+    --color-secondary: #202020;
+    --color-background: #0A0A0A;
+    --color-card: #101010;
+    --color-border: #262626;
+    --color-description: #9A9A9A;
+    --color-success: #5CB85C;
+    --color-destructive: #9F0303;
+}
+
 :root {
     font-family: "Rubik", sans-serif;
     --radius: 0.65rem;
@@ -68,5 +101,33 @@
     --sidebar-accent: oklch(0.269 0 0);
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee var(--duration) linear infinite;
+  }
+  .animate-marquee-vertical {
+    animation: marquee-vertical var(--duration) linear infinite;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
 }

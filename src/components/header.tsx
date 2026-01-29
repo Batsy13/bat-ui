@@ -23,12 +23,6 @@ export const Header = () => {
           <nav className="items-center hidden gap-6 text-white lg:flex">
             <Link
               className="px-4 py-1 bg-transparent hover:bg-border rounded-[5px] cursor-pointer"
-              to="/docs"
-            >
-              Docs
-            </Link>
-            <Link
-              className="px-4 py-1 bg-transparent hover:bg-border rounded-[5px] cursor-pointer"
               to="/docs/components"
             >
               Components
@@ -38,12 +32,6 @@ export const Header = () => {
               to="/examples"
             >
               Examples
-            </Link>
-            <Link
-              className="px-4 py-1 bg-transparent hover:bg-border rounded-[5px] cursor-pointer"
-              to="/themes"
-            >
-              Themes
             </Link>
           </nav>
         </div>
@@ -82,13 +70,6 @@ export const Header = () => {
 
             <nav className="flex flex-col gap-4 mb-4 text-white">
               <Link
-                to="/docs"
-                className="px-3 py-1 hover:bg-border rounded-[5px]"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Docs
-              </Link>
-              <Link
                 to="/docs/components"
                 className="px-3 py-1 hover:bg-border rounded-[5px]"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -101,13 +82,6 @@ export const Header = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Examples
-              </Link>
-              <Link
-                to="/themes"
-                className="px-3 py-1 hover:bg-border rounded-[5px]"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Themes
               </Link>
             </nav>
 

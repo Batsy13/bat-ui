@@ -3,7 +3,7 @@ import { Outlet } from "react-router";
 
 function AppLayout() {
     return (
-        <div className="h-dvh overflow-hidden bg-background">
+        <div className="min-h-dvh bg-background">
             <Header />
             <Outlet />
         </div>

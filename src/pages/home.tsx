@@ -48,7 +48,7 @@ export const Home = () => {
                     <Button size="lg" className="h-12 px-8 text-base text-white" onClick={() => navigate("/docs/components")}>
                         Get Started
                     </Button>
-                    <Button variant="outline" size="lg" className="h-12 px-8 text-base text-white">
+                    <Button variant="outline" size="lg" className="h-12 px-8 text-base text-white" onClick={() => window.open("https://github.com/Batsy13/bat-ui", "_blank")}>
                         Github
                     </Button>
                 </div>

@@ -37,7 +37,6 @@ export const components = [
     { title: "Switch", path: "/switch" },
     { title: "Table", path: "/table" },
     { title: "Tabs", path: "/tabs" },
-    { title: "Textarea", path: "/textarea" },
     { title: "Toggle", path: "/toggle" },
     { title: "Tooltip", path: "/tooltip" },
     { title: "Terminal", path: "/terminal" },

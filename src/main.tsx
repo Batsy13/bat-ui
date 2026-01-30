@@ -9,20 +9,22 @@ import { Page404 } from "./pages/404-not-found";
 import { ComponentPage } from "./pages/component-page";
 import { TestPage } from "./pages/test-page";
 import { ComponentHome } from "./pages/component-home";
+import { ExamplesPage } from "./pages/examples/examples-page";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<AppLayout />}>
         <Route index element={<Home />}></Route>
+        <Route path="examples" element={<ExamplesPage />} />
         <Route path="docs" element={<DocsLayout />}>
           <Route index element={<DocsHome />}></Route>
           <Route path="components" element={<ComponentHome />}></Route>
           <Route path="components/:componentName" element={<ComponentPage />} />
-          <Route path="test" element={<TestPage />}/>
+          <Route path="test" element={<TestPage />} />
         </Route>
       </Route>
-      <Route path="*" element={<Page404 />}/>
+      <Route path="*" element={<Page404 />} />
     </Routes>
   </BrowserRouter>
 );
